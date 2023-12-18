@@ -40,7 +40,12 @@
                     <td>   <a href="?controller=Categoria&action=delete&id=<?= $categoria->getIdCategorias() ?>" class="nav-link">
                             <i class="fa-solid fa-trash"></i>
                                 <p>Eliminar categorias</p>
-                            </a></td>
+                            </a>
+                            <a href="" class="nav-link">
+                            <i class="fa-solid fa-pencil"></i>
+                                <p>Editar categorias</p>
+                            </a>
+                        </td>
                    
                    
                 </tr>

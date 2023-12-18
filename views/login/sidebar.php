@@ -75,12 +75,7 @@
                                 <p>Añadir categorias</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                            <i class="fa-solid fa-pencil"></i>
-                                <p>Editar categorias</p>
-                            </a>
-                        </li>
+                        
                        
                     </ul>
         </nav>

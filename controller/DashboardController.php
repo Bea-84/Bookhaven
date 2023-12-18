@@ -67,6 +67,14 @@ class DashboardController{
         $views = 'views/login/editarProducto.php';
         include_once 'views/login/dashboard.php';
     }
+
+   public function editCat(){
+
+         $categoria = categoriaDao::getCatById($_GET['id']);
+         //tengo que ir a categoria controller y categoria dao 
+         //para hacer funciones y conseguir la categoria
+
+   }
    
 
 }
