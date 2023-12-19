@@ -41,7 +41,7 @@
                             <i class="fa-solid fa-trash"></i>
                                 <p>Eliminar categorias</p>
                             </a>
-                            <a href="" class="nav-link">
+                            <a href="?controller=Dashboard&action=editCat&id=<?= $categoria->getIdCategorias() ?>" class="nav-link">
                             <i class="fa-solid fa-pencil"></i>
                                 <p>Editar categorias</p>
                             </a>

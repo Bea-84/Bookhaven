@@ -42,6 +42,29 @@ class CategoriaDAO {
         $stmt->close();
     
     }
+    //Función para conseguir categoria x su id
+    public static function getCatById($idCategorias){
+        $con=Database::connect();
+        $stmt=$con->prepare("SELECT * FROM categorias WHERE idCategorias = ?");
+        $stmt->bind_param("i",$idCategorias);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $categoria = $result->fetch_object('Categoria');
+       
+        $con->close();
+
+        return $categoria;
+    }
+
+    //función para edita un producto
+    public static function edit($idCategorias,$nombreCategoria,$descripcion){
+        $con=Database::connect();
+        $stmt = $con->prepare("UPDATE categorias SET nombreCategoria = ?,  descripcion = ? WHERE idCategorias = ?");
+        $stmt->bind_param("ssi", $nombreCategoria, $descripcion, $idCategorias);
+        $stmt->execute();
+        $con->close();
+    }
 
     
 }

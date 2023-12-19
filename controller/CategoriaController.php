@@ -29,5 +29,17 @@ class CategoriaController {
         header("Location:".url."?controller=Dashboard&action=listCategorias");
     
     }
+
+    //Función para editar un producto
+    public function edit(){
+        $idCategorias=$_POST['idCategorias'];
+        $nombreCategoria = $_POST['nombreCategoria'];
+        $descripcion = $_POST['descripcion'];
+
+        categoriaDao:: edit($idCategorias,$nombreCategoria,$descripcion);
+
+        header("Location:".url."?controller=Dashboard&action=verCategoria");
+    }
+
     
 }
