@@ -38,12 +38,7 @@
                                 <p>Añadir Usuario</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                            <i class="fa-solid fa-pencil"></i>
-                                <p>Editar Usuarios</p>
-                            </a>
-                        </li>
+                       
                       
 <!------------------------------------------------------------------------------------------------------------------------------------->
                         <li class="nav-header">PRODUCTOS</li>

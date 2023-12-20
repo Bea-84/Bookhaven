@@ -75,6 +75,13 @@ class DashboardController{
          include_once 'views/login/dashboard.php';
 
    }
+
+   public function editUser(){
+
+    $user = usuarioDao::getUserById($_GET['id']);
+    $views = 'views/login/editarUser.php';
+    include_once 'views/login/dashboard.php';
+   }
    
 
 }

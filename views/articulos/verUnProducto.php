@@ -9,7 +9,12 @@
 </head>
 <body>
 <?php include_once 'views/nav.php'; ?>
-<?php include_once 'views/header.php'; ?>
+
+<hr >
+<h5 class="text-center" >Descuento del 10% en compras superiores a 30 €</h5>
+<hr>
+<br>
+
 
     <div class="card mb-3 border-dark bg-dark" style="max-width: 2000px;">
         <div class="row g-0">

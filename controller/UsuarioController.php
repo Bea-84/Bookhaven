@@ -66,5 +66,20 @@ class UsuarioController {
         usuarioDao::delete($id);
         header("Location:".url."?controller=Dashboard&action=listUsuarios");
     }
+
+    //Función para editar usuario
+    public function edit(){
+        $id=$_POST['id'];
+        $nombre=$_POST['nombre'];
+        $apellidos=$_POST['apellidos'];
+        $email=$_POST['email'];
+        $password=$_POST['password'];
+        $direccion=$_POST['direccion'];
+
+        usuarioDao::edit($id,$nombre,$apellidos,$email,$password,$direccion);
+        header("Location:".url."?controller=Dashboard&action=listUsuarios");
+    }
     
+
+
 }

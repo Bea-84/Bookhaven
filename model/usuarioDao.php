@@ -65,5 +65,30 @@ class UsuarioDao{
     
     }
 
+    //Función para conseguir usuario por su Id
+    public static function getUserById($idUsuarios){
+        $con=Database::connect();
+        $stmt=$con->prepare("SELECT * FROM usuarios WHERE idUsuarios = ?");
+        $stmt->bind_param("i",$idUsuarios);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $user = $result->fetch_object('usuario');
+       
+        $con->close();
+
+        return $user;
+    }
+
+    //Función para editar un usuario
+    public static function edit($id,$nombre,$apellidos,$email,$password,$direccion){
+        $con=Database::connect();
+        $stmt = $con->prepare("UPDATE usuarios SET nombre = ?,  apellidos = ? , email = ?,  password = ?, direccion = ? WHERE idUsuarios = ?");
+        $stmt->bind_param("sssssi",$nombre,$apellidos,$email,$password,$direccion,$id);
+        $stmt->execute();
+        $con->close();
+
+    }
+
 }
 

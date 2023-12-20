@@ -22,7 +22,7 @@
     <?php
     foreach ($listaarticulos as $articulo) {
     ?>
-        <div class="card-p col-3 mb-4 ms-5 me-5 border-dark bg-dark" style="max-width: 470px">
+        <div class="card-p col-3 mb-4 ms-4 me-4 border-dark bg-dark" style="width: 20rem;">
             <img class="card-img-top " src="img/<?= $articulo->getImg() ?>" alt="Card image cap">
             <div class="card-body">
                 <pre></pre>

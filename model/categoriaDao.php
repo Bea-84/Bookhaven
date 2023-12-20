@@ -57,7 +57,7 @@ class CategoriaDAO {
         return $categoria;
     }
 
-    //función para edita un producto
+    //función para editar un producto
     public static function edit($idCategorias,$nombreCategoria,$descripcion){
         $con=Database::connect();
         $stmt = $con->prepare("UPDATE categorias SET nombreCategoria = ?,  descripcion = ? WHERE idCategorias = ?");

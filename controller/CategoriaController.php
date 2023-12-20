@@ -32,13 +32,13 @@ class CategoriaController {
 
     //Función para editar un producto
     public function edit(){
-        $idCategorias=$_POST['idCategorias'];
-        $nombreCategoria = $_POST['nombreCategoria'];
+        $idCategorias=$_POST['id'];
+        $nombreCategoria = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
-
+     
         categoriaDao:: edit($idCategorias,$nombreCategoria,$descripcion);
-
-        header("Location:".url."?controller=Dashboard&action=verCategoria");
+        
+        header("Location:".url."?controller=Dashboard&action=listCategorias");
     }
 
     

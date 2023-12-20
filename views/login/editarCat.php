@@ -17,7 +17,7 @@
 
     <section class="content">
 
-    <form action="?controller=Articulo&action=edit" method="post">
+    <form action="?controller=Categoria&action=edit" method="post">
         <input type="number" name="id" value="<?=$categoria->getIdCategorias()?>" required hidden/>
         <br>
         Nombre categoria:
@@ -26,7 +26,7 @@
         <br>
         Descripción:
         <br>
-        <input type="text" name="descripción" placeholder="Descripción" value="<?=$categoria->getDescripcion()?>" required/>
+        <input type="text" name="descripcion" placeholder="Descripción" value="<?=$categoria->getDescripcion()?>" required/>
         <br>
         <pre></pre>
         <button type="submit">Guardar</button>

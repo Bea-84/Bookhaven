@@ -47,7 +47,12 @@
                     <td> <a href="?controller=Usuario&action=delete&id=<?= $usuario->getIdUsuarios() ?>"class="nav-link">
                             <i class="fa-solid fa-trash"></i>
                                 <p>Eliminar Usuario</p>
-                            </a></td>
+                            </a>
+                            <a href="?controller=Dashboard&action=editUser&id=<?= $usuario->getIdUsuarios() ?>" class="nav-link">
+                            <i class="fa-solid fa-pencil"></i>
+                                <p>Editar Usuarios</p>
+                            </a>
+                        </td>
                    
                 </tr>
 
