@@ -34,10 +34,19 @@
                 <p class="text-white">Precio:</p>
                 <p class="card-text text-white"><?= $articulo->getPrecio() ?> €</p>
 
-                <!-- Botones de ver producto y añadir al carrito  -->
+                <!-- Botón de ver producto   -->
                 <button class="btn btn-outline-success btn-outline-light" type="button" onclick="location.href='?controller=Articulo&action=listProductoxId&id=<?= $articulo->getIdProductos() ?>'">Ver producto</button>
                 <pre></pre>
-                <button class="btn btn-outline-success btn-outline-light" type="button">Añadir al carrito</button>
+                 <!--Botón añadir al carrito-->
+                 <div class="ms-auto">
+                        <form method="post" action="">
+                            <p class="text-white">Cantidad:</p>
+                            <input type="number" name="cantidad" value="1" min="1" max="10">
+                            <input type="hidden" name="idProducto" value="<?= $articulo->getIdProductos() ?>">
+                            <button class="btn btn-outline-success btn-outline-light" type="submit" name="accion" value="anadir">Añadir al carrito</button>
+                            
+                        </form>
+                    </div>
             </div>
             <pre></pre>
         </div>

@@ -34,7 +34,7 @@
                     </div>
                     <!--Botón añadir al carrito-->
                     <div class="ms-auto">
-                        <form method="post" action="agregar_al_carrito.php">
+                        <form method="post" action="">
                             <p class="text-white">Cantidad:</p>
                             <input type="number" name="cantidad" value="1" min="1" max="10">
                             <input type="hidden" name="idProducto" value="<?= $articulo->getIdProductos() ?>">
