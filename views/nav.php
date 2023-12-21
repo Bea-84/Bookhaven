@@ -1,33 +1,20 @@
 
 
 <nav class="navbar navbar-expand-lg bg-dark">
-  <div class="container-fluid">
-    <a href="?controller=Articulo" class="brand-link">
-    <h4 class="navbar-brand text-white">Bookhaven</h4>
+  <div class="container-fluid  ">
+
+<!--Logo-->
+
+  <a href="?controller=Articulo" class="brand-link ">
+    <img src="dist/img/logo3.jpg" alt="Logo" class="brand-image  " style= "width: 3rem;">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-
-        <!--Desplegable categorias-->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">Categorías</a>
-          <ul name="idCategoria" class="dropdown-menu">
-            <?php foreach ($listacategorias as $cat) : ?>
-              <li><a class="dropdown-item"
-                  href="?controller=Articulo&action=listProductosxIdCat&id=<?= $cat->getIdCategorias() ?>"><?= $cat->getNombreCategoria() ?></a>
-              </li>
-            <?php endforeach; ?>
-          </ul>
-        </li>
-      </ul>
-
-      <!--Centro de búsqueda-->
+        <!--Centro de búsqueda-->
       
-      <form class="d-flex justify-content-center" role="search">
+        <form class="d-flex justify-content-center" role="search">
           <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
           <button class="btn btn-outline-success btn-outline-light" type="submit">Buscar</button>
         </form>
@@ -68,6 +55,27 @@
         <?php endif; ?>
     </ul>
 </li>
+
+  
+  
+
+
+        <!--Desplegable categorias-->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Categorías</a>
+          <ul name="idCategoria" class="dropdown-menu">
+            <?php foreach ($listacategorias as $cat) : ?>
+              <li><a class="dropdown-item"
+                  href="?controller=Articulo&action=listProductosxIdCat&id=<?= $cat->getIdCategorias() ?>"><?= $cat->getNombreCategoria() ?></a>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        </li>
+      </ul>
+
+
      
        
 

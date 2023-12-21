@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="?controller=Dashboard">Home</a></li>
+                        <li class="breadcrumb-item"><a href="?controller=Articulo">Home</a></li>
                         
                     </ol>
                 </div>
