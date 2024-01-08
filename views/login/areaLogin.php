@@ -24,12 +24,12 @@
               <form action="?controller=usuario&action=verificaLogin" method="post">
 
                 <div class="form-outline form-white mb-4">
-                  <input type="text" name="email" class="form-control form-control-lg" />
+                  <input type="text" name="email" class="form-control form-control-lg" required/>
                   <label class="form-label" for="typeEmailX">Email</label>
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                  <input type="password" name="password" class="form-control form-control-lg" />
+                  <input type="password" name="password" class="form-control form-control-lg" required/>
                   <label class="form-label" for="typePasswordX">Contraseña</label>
                 </div>
 

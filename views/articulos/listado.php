@@ -18,6 +18,8 @@
 
 <pre></pre>
 
+
+
 <div class="row">
     <?php
     foreach ($listaarticulos as $articulo) {
@@ -39,7 +41,7 @@
                 <pre></pre>
                  <!--Botón añadir al carrito-->
                  <div class="ms-auto">
-                        <form method="post" action="">
+                        <form method="post" action="?controller=Pedido&action=addCarrito">
                             <p class="text-white">Cantidad:</p>
                             <input type="number" name="cantidad" value="1" min="1" max="10">
                             <input type="hidden" name="idProducto" value="<?= $articulo->getIdProductos() ?>">
