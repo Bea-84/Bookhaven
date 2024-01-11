@@ -46,7 +46,11 @@
     </a>
     <ul class="dropdown-menu ">
         <?php 
-        session_start();
+        //Si no hay sesión iniciada, se inicia una nueva. Si ya existe una sesión, se mantiene la misma.
+        if(!$_SESSION)
+        {
+          session_start();
+        }
         if (isset($_SESSION['user'])) : ?>
             <li><span class="dropdown-item"><?php echo $_SESSION['user']->getNombre(); ?></span></li>
             <li><a class="dropdown-item" href="?controller=usuario&action=logout">Cerrar sesión</a></li>

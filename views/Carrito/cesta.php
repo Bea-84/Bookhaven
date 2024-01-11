@@ -21,23 +21,23 @@
 
 <?php
 
-var_dump($_SESSION['cesta']);
-$total = 0;  // Inicializar el total fuera del bucle
-foreach ($_SESSION['cesta'] as $lineaCarrito) {
-    $total += $lineaCarrito->getPrecio() * $lineaCarrito->$_POST['cantidad'];
+// Inicio variable fuera del bucle
+$total = 0;  
+foreach ($_SESSION['cesta'] as $lineacarrito) {
+    $total += $lineacarrito["articulo"]->getPrecio() * $lineacarrito['cantidad'];
 ?>
     <div class="row g-0">
         <div class="col-md-4 ">
             <pre></pre>
-            <img class="img-fluid rounded-start" src="img/<?= $lineaCarrito['articulo']->getImg() ?>" alt="Card image cap">
+            <img class="img-fluid rounded-start" src="img/<?= $lineacarrito['articulo']->getImg() ?>" alt="Card image cap">
             <pre></pre>
         </div>
         <div class="col-md-8">
             <div class="card-body d-flex align-items-center">
                 <div>
-                    <p class="card-title text-white">Nombre: <?= $lineaCarrito['articulo']->getNombre() ?></p>
-                    <p class="card-text text-white">Precio: <?= $lineaCarrito['articulo']->getPrecio() ?> €</p>
-                    <p class="card-text text-white">Cantidad: <?= $lineaCarrito['cantidad'] ?></p>
+                    <p class="card-title text-black">Nombre: <?= $lineacarrito['articulo']->getNombre() ?></p>
+                    <p class="card-text text-black">Precio: <?= $lineacarrito['articulo']->getPrecio() ?> €</p>
+                    <p class="card-text text-black">Cantidad: <?= $lineacarrito['cantidad'] ?></p>
                 </div>
             </div>
         </div>
@@ -48,9 +48,8 @@ foreach ($_SESSION['cesta'] as $lineaCarrito) {
 
 <div>
     <p class="text-black">Total: <?= $total ?> €</p>
-    <button class="btn btn-outline-success btn-outline-light">Comprar</button>
-    <button class="btn btn-outline-success btn-outline-light">Cancelar</button>
-    <button class="btn btn-outline-success btn-outline-light">Volver a la tienda</button>
+    <a class="btn btn-dark" href="?controller=usuario&action=login">Comprar</a>
+    <a class="btn btn-dark" href="?controller=Articulo">Volver a la tienda</a>
 </div>
 
 <script src="plugins/jquery/jquery.min.js"></script>
