@@ -61,10 +61,10 @@ class ArticuloDAO
     }
 
     //Función añadir producto
-    public static function add( $nombre, $precio, $descripcion, $idCategoria){
+    public static function add( $nombre, $precio, $descripcion, $idCategoria,$stock){
         $con=Database::connect();
-        $stmt = $con->prepare("INSERT INTO Productos (nombre, precio, descripcion,idCategoria) VALUES ( ?, ?, ?,?)");
-        $stmt->bind_param("sssi", $nombre, $precio, $descripcion, $idCategoria);
+        $stmt = $con->prepare("INSERT INTO Productos (nombre, precio, descripcion,idCategoria,stock) VALUES ( ?, ?, ?,?,?)");
+        $stmt->bind_param("sssii", $nombre, $precio, $descripcion, $idCategoria,$stock);
         $stmt->execute();
         $con->close();
     }
@@ -80,10 +80,10 @@ class ArticuloDAO
     }
 
     //Función editar producto
-    public static function edit( $id,$nombre, $precio, $descripcion, $idCategoria){
+    public static function edit( $id,$nombre, $precio, $descripcion,$stock,$idCategoria){
         $con=Database::connect();
-        $stmt = $con->prepare("UPDATE Productos SET nombre = ?, precio = ?, descripcion = ?, idCategoria = ? WHERE idProductos = ?");
-        $stmt->bind_param("sdsii", $nombre, $precio, $descripcion, $idCategoria,$id);
+        $stmt = $con->prepare("UPDATE Productos SET nombre = ?, precio = ?, descripcion = ?, idCategoria = ?, stock = ? WHERE idProductos = ?");
+        $stmt->bind_param("sdsiii", $nombre, $precio, $descripcion, $idCategoria,$stock,$id);
         $stmt->execute();
         $con->close();
     

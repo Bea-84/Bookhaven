@@ -8,6 +8,7 @@ class Articulo
     private $descripcion;
     private $idCategoria;
     public $img;
+    public $stock;
 
     public function __construct(){    
     }
@@ -85,5 +86,17 @@ class Articulo
         $this->img = $img;
 
         return $this;
+    }
+
+    public function getStock(){
+        return $this->stock;
+    }
+
+    public function setStock($stock){
+        $this->stock = $stock;
+
+        return $this;
+    
+    
     }
 }

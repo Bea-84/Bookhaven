@@ -39,8 +39,9 @@ class ArticuloController{
         $precio = $_POST['precio'];
         $descripcion = $_POST['descripcion'];
         $idCategoria = $_POST['idCategoria'];
+        $stock = $_POST['stock'];
 
-        ArticuloDAO::add($nombre, $precio, $descripcion ,$idCategoria);
+        ArticuloDAO::add($nombre, $precio, $descripcion ,$idCategoria,$stock);
 
         header("Location:".url."?controller=Dashboard&action=addProducto");
    
@@ -60,9 +61,11 @@ class ArticuloController{
         $nombre = $_POST['nombre'];
         $precio = $_POST['precio'];
         $descripcion = $_POST['descripcion'];
+        $stock = $_POST['stock'];
         $idCategoria = $_POST['idCategoria'];
        
-        ArticuloDAO::edit($id,$nombre, $precio, $descripcion ,$idCategoria);
+       
+        ArticuloDAO::edit($id,$nombre, $precio, $descripcion ,$stock,$idCategoria);
 
         header("Location:".url."?controller=Dashboard&action=verProductos");
     }

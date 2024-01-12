@@ -48,8 +48,15 @@ foreach ($_SESSION['cesta'] as $lineacarrito) {
 
 <div>
     <p class="text-black">Total: <?= $total ?> €</p>
-    <a class="btn btn-dark" href="?controller=usuario&action=login">Comprar</a>
-    <a class="btn btn-dark" href="?controller=Articulo">Volver a la tienda</a>
+        <!-- Si existe sesion de usuario te mostrará botón comprar y botón volver tienda --> 
+    <?php
+      if (isset($_SESSION['user'])) {?>
+        <a class="btn btn-dark" href="?controller=Pedido&action=addPedido">Comprar</a>
+        <a class="btn btn-dark" href="?controller=Articulo">Volver a la tienda</a>
+        <!--si no existe sesion de usuario te mostrará botón registrarse-->
+    <?php } else { ?>
+        <a class="btn btn-dark" href="?controller=Dashboard&action=addUsuario">Registrarse</a>
+    <?php } ?> 
 </div>
 
 <script src="plugins/jquery/jquery.min.js"></script>

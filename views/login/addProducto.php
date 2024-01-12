@@ -30,6 +30,10 @@
         <br>
         <input  name="descripcion" placeholder="Descripción" required/>
         <br>
+        Stock:
+        <br>
+        <input type="number" name="stock" placeholder="Stock" required/>
+        <br>
         Categoria:
         <br>
         <select name="idCategoria">

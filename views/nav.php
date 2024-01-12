@@ -36,7 +36,6 @@
             
 
              
-          
       <!-- Icono de persona con menú desplegable -->
 <li class="nav-item dropdown">
     <a href="#" class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -44,17 +43,27 @@
             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
         </svg>
     </a>
-    <ul class="dropdown-menu ">
+    <ul class="dropdown-menu">
         <?php 
-        //Si no hay sesión iniciada, se inicia una nueva. Si ya existe una sesión, se mantiene la misma.
-        if(!$_SESSION)
-        {
-          session_start();
+        // Si no hay sesión iniciada, se inicia una nueva. Si ya existe una sesión, se mantiene la misma.
+        if (!isset($_SESSION)) {
+            session_start();
         }
+        
+        // Si hay una sesión iniciada de usuario
         if (isset($_SESSION['user'])) : ?>
             <li><span class="dropdown-item"><?php echo $_SESSION['user']->getNombre(); ?></span></li>
             <li><a class="dropdown-item" href="?controller=usuario&action=logout">Cerrar sesión</a></li>
-        <?php else : ?>
+            
+            <?php
+            // Si hay una sesión de cesta
+            if (isset($_SESSION['cesta']) && !empty($_SESSION['cesta'])) {
+                echo "<li><a class='dropdown-item' href=''>Ver pedidos</a></li>";
+            }
+            ?>
+            
+        <?php else: ?>
+            <!-- Si no hay sesión de usuario -->
             <li><a class="dropdown-item" href="?controller=usuario&action=login">Iniciar sesión</a></li>
         <?php endif; ?>
     </ul>

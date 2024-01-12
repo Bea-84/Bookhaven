@@ -33,6 +33,10 @@
         <br>
         <input  name="descripcion" placeholder="Descripción" value="<?=$producto->getDescripcion()?>" required/>
         <br>
+        Stock:
+        <br>
+        <input type="number" name="stock" placeholder="Stock" value="<?=$producto->getStock()?>" required/>
+        <br>
         Categoria:
         <br>
         <select name="idCategoria">

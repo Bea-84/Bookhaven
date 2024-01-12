@@ -32,22 +32,37 @@ class UsuarioController {
     //funcion verifica login
     public function verificaLogin(){
 
-       $email=$_POST['email'];
-       $password=$_POST['password'];
-       $user = usuarioDao::verificaLogin($email,$password);
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $user = usuarioDao::verificaLogin($email, $password);
     
-       if($user){
-          session_start();
-          $_SESSION['user'] = $user;
-        if( $user->getRol() == 'administrador' ){
-            header("Location:".url."?controller=Dashboard&action=listUsuarios");
+        if ($user) {
+            session_start();
+            $_SESSION['user'] = $user;
+    
+            if ($user->getRol() == 'administrador') {
+                // si existe y es admin, lleva a la zona de administrador
+                header("Location: " . url . "?controller=Dashboard&action=listUsuarios");
+                exit();
+            } elseif ($user->getRol() == 'usuario') {
+                // si está registrado y no es admin, te lleva a la tienda
+                header("Location: " . url . "?controller=Articulo");
+                exit();
+            } elseif ($user->getRol() == 'usuario' && isset($_SESSION['cesta'])) {
+                // si está registrado, no es admin y hay una sesión con la cesta, te lleva a mi cesta
+                header("Location: " . url . "?controller=Pedido&action=addCarrito");
+                exit();
+            }
+        } elseif (isset($_SESSION['cesta']))  {
+            //no esta registrado pero existe una sesion con la cesta y se acaba de registrar como usuario te llevará a cesta
+            header("Location: " . url . "?controller=Pedido&action=addCarrito");
+            exit();
         }
         else {
-            header("Location:".url."?controller=Articulo");
-        }
-    
-        } else {
-        header("Location:".url."?controller=Dashboard&action=addUsuario");
+            // no está registrado, te lleva a la zona de administrador para añadir usuario
+            header("Location: " . url . "?controller=Dashboard&action=addUsuario");
+            exit();
+
         }
     }
 

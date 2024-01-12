@@ -36,6 +36,7 @@
                     <th>Nombre</th>
                     <th>Precio</th>
                     <th>Descripción</th>
+                    <th>Stock</th>
                     <th>idcategoria</th>
                     <th>Imagen</th>
                     <th>Acciones</th>
@@ -51,6 +52,7 @@
                     <td><?= $articulo->getNombre() ?></td>
                     <td><?= $articulo->getPrecio() ?></td>
                     <td><?= $articulo->getDescripcion() ?></td>
+                    <td><?= $articulo->getStock() ?></td>
                     <td><?= $articulo->getIdcategoria() ?></td>
                     <td><img class="" src="img/<?= $articulo->getImg() ?>" alt="Card image cap"></td>
                     <td>  <a href="?controller=Articulo&action=delete&id=<?= $articulo->getIdproductos() ?>" class="nav-link">
