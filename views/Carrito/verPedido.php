@@ -9,7 +9,7 @@
 </head>
 <body>
  <?php
- //no me devuelve nada xq $pedido es una variable indefinidas
+ //no me devuelve nada xq $pedido es una variable indefinida
  var_dump($pedido);
  ?>
 <div class="card mb-3 border-dark bg-dark" style="max-width: 2000px;">
