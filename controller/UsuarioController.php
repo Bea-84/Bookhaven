@@ -41,7 +41,7 @@ class UsuarioController {
             $_SESSION['user'] = $user;
     
             if ($user->getRol() == 'administrador') {
-                // si existe y es admin, lleva a la zona de administrador
+                // si está registrado  y es admin, lleva a la zona de administrador
                 header("Location: " . url . "?controller=Dashboard&action=listUsuarios");
                 exit();
             } elseif ($user->getRol() == 'usuario') {

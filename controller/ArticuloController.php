@@ -70,8 +70,15 @@ class ArticuloController{
         header("Location:".url."?controller=Dashboard&action=verProductos");
     }
 
- 
+    //Función consulta en la BBDD si hay stock de un producto
+    public function consultaStock(){
 
-   
-
+        //recibo id producto para poder hacer la consulta
+        $id=$_POST['id'];
+        $stock=ArticuloDAO::consultaStock($id);
+        //si el stock es igual a cero no podremos dar al boton añadir al carrito
+        
+            
+    }
+    
 }

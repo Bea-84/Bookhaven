@@ -89,5 +89,22 @@ class ArticuloDAO
     
     }
 
+    //Función consultar stock
+    public static function consultaStock($idProductos){
+        $con=Database::connect();
+        $stmt = $con->prepare("SELECT stock FROM Productos WHERE idProductos = ?");
+        $stmt->bind_param("i", $idProductos);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $articulo = $result->fetch_object('Articulo');
+       
+        $con->close();
+
+        return $articulo;
+    
+    }
+
     
 }

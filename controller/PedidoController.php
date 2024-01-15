@@ -35,6 +35,7 @@ class PedidoController{
         );
 
         include_once 'views/Carrito/cesta.php';
+        
 
     }
 
@@ -60,6 +61,27 @@ class PedidoController{
         include_once 'views/Carrito/verPedido.php';
  
  
+    }
+
+    //Función eliminar producto de la cesta
+    public function deleteProducto(){
+       //si existe sesion cesta y recibo id del producto a eliminar
+        session_start();
+
+        //recibo id del producto a eliminar
+        $id = $_GET['idProducto'];
+        //recorro la cesta y si coincide con el id del producto lo borro
+        //$indice es xq linea carrito es una array
+        foreach ($_SESSION['cesta'] as $indice =>  $lineacarrito) {
+            if($lineacarrito['articulo']->getIdProductos() == $id){
+                unset($_SESSION['cesta'][$indice]);
+            }
+        
+        }
+        //vuelvo a mostrar la cesta
+        include_once 'views/Carrito/cesta.php';
+           
+        
     }
 
 
