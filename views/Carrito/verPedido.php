@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 </head>
 <body>
- <?php
- //no me devuelve nada xq $pedido es una variable indefinida
- var_dump($pedido);
- ?>
-<div class="card mb-3 border-dark bg-dark" style="max-width: 2000px;">
+
+    <?php
+    foreach($listapedidos as $pedido)
+    {
+        ?>
+        <div class="card mb-3 border-dark bg-dark" style="max-width: 2000px;">
         <div class="row g-0">
             <div class="col-md-8">
                 <div class="card-body d-flex align-items-center">
@@ -33,7 +34,10 @@
                 </div>
             </div>
         </div>
+        <?php } ?>
     </div>
+   
+
 
 
 <script src="plugins/jquery/jquery.min.js"></script>

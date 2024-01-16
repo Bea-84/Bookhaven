@@ -50,7 +50,7 @@
                     <td><?= $lineacarrito['articulo']->getNombre() ?></td>
                     <td><?= $lineacarrito['articulo']->getPrecio() ?></td>
                     <td><?= $lineacarrito['cantidad'] ?></td>
-                    <td><?= $lineacarrito['articulo']->getPrecio() * $lineacarrito['cantidad'] ?></td>
+                    <td><?= $lineacarrito['articulo']->getPrecio() * $lineacarrito['cantidad'] ?>  €</td>
                     <td>
                     <a href="?controller=Pedido&action=deleteProducto&idProducto=<?= $lineacarrito['articulo']->getIdProductos() ?>">
                     <i class="fa-solid fa-trash"></i>
@@ -68,7 +68,7 @@
             <!--Precio total-->
                 <div class="text-right mt-4">
                   <label class="text-muted font-weight-normal m-0">Precio total</label>
-                  <div class="text-large"><strong><?= $total ?>$</strong></div>
+                  <div class="text-large"><strong><?= $total ?> € </strong></div>
                 </div>
               </div>
             </div>

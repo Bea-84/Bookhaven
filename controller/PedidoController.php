@@ -8,6 +8,11 @@ class PedidoController{
 
 
     //Función ver pedidos
+    public function verPedidos(){
+        $listapedidos = pedidoDao::getAllPedidos();
+        include_once 'views/Carrito/verPedido.php';
+    
+    }
   
     //Función añadir producto al carrito y guardar cesta variable sesion
     public function addCarrito(){
@@ -82,6 +87,14 @@ class PedidoController{
         include_once 'views/Carrito/cesta.php';
            
         
+    }
+
+    //Función ver cesta
+    public function verCesta(){
+
+        $view= 'views/Carrito/cesta.php';
+        include_once 'views/Carrito/cesta.php';
+
     }
 
 
