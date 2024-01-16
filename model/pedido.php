@@ -30,7 +30,7 @@ class Pedido{
     }
 
     public function getfecha_compra(){
-        return $this->$fecha_compra;
+        return $this->fecha_compra;
     }
 
     public function setfecha_compra($fecha_compra){
@@ -39,7 +39,7 @@ class Pedido{
     }
 
     public function getidUsuario(){
-        return $this->$idUsuario;
+        return $this->idUsuario;
     }
 
     public function setidusuario($idUsuario){

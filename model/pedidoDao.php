@@ -15,21 +15,25 @@ class PedidoDao{
        $stmt->close();
     }
 
-    //Función para conseguir todos los pedidos de la base de datos
-    public static function getAllPedidos(){
-        $conn = Database::connect();
+    //Función buscar pedidos por id usuario
+    public static function getPedidosByUserId($idUsuario){
+      $con = Database::connect();
+      $stmt = $con->prepare("SELECT * FROM pedidos WHERE idUsuario = ?");
+      $stmt->bind_param("i", $idUsuario);
+      $stmt->execute();
+      $result = $stmt->get_result();
 
-        $stmt = $conn->prepare("SELECT * FROM pedidos");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        $listaPedidos = [];
-        while($pedido = $result->fetch_object('pedido')){
-            $listaPedidos[] = $pedido;
-        }
-        $stmt->close();
-        return $listaPedidos;
-    
+      $pedidos = array();
+
+      while ($pedido = $result->fetch_object('pedido')) {
+          $pedidos[] = $pedido;
+      }
+
+      $con->close();
+
+      return $pedidos;
     }
+
+
     
 }

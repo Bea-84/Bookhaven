@@ -9,33 +9,51 @@
 </head>
 <body>
 
-    <?php
+<?php include_once 'views/nav.php'; ?>
+
+    <div class="container px-3 my-5 clearfix">
+    <!-- Shopping cart table -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Mis pedidos</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered m-0">
+                <thead>
+                  <tr>
+                    <!-- Cabecera tabla -->
+                    <th class="text-center py-3 px-4" style="min-width: 400px;">Numero pedido:</th>
+                    <th class="text-center py-3 px-4" style="min-width: 400px;">Precio total:</th>
+                    <th class="text-right py-3 px-4" style="width: 100px;">Fecha pedido:</th>
+                    <th class="text-center py-3 px-4" style="width: 120px;">Numero Usuario</th>
+                    
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                <?php
     foreach($listapedidos as $pedido)
     {
         ?>
-        <div class="card mb-3 border-dark bg-dark" style="max-width: 2000px;">
-        <div class="row g-0">
-            <div class="col-md-8">
-                <div class="card-body d-flex align-items-center">
-                    <div>
-                        <p class="text-white">Id Pedido:</p>
-                        <p class="card-title text-white"><?= $pedido->getidPedidos() ?></p>
-                        <p class="text-white">Total:</p>
-                        <p class="card-title text-white"><?= $pedido->getprecio_total() ?></p>
-                        <p class="text-white">Fecha pedido:</p>
-                        <p class="card-text text-white"><?= $pedido->getfecha_compra() ?> €</p>
-                        <p class="text-white">Id Usuario:</p>
-                        <p class="card-text text-white"><?= $pedido->getidUsuarios() ?></p>
-                    </div>
-                    <!--Botón volver tienda-->
-                    <div >
-                    <a class="btn btn-dark" href="?controller=Articulo">Volver a la tienda</a>
-                    </div>
-                </div>
+          <tr>
+                   
+                    <td><?= $pedido->getidPedidos() ?></td>
+                    <td><?= $pedido->getprecio_total() ?>€</td>
+                    <td><?= $pedido->getfecha_compra() ?></td>
+                    <td><?= $pedido->getidUsuario() ?></td>
+                    </tr>
+                    <?php } ?>
+                    </tbody>
+              </table>
             </div>
-        </div>
-        <?php } ?>
-    </div>
+            <pre></pre>
+              <!--Botón volver tienda-->
+              <div>
+                    <a class="btn btn-dark" href="?controller=Articulo">Volver a la tienda</a>
+                </div>
+
+
    
 
 

@@ -11,6 +11,7 @@ class UsuarioController {
         include_once 'views/usuarios/listadoUsers.php';
       
     }
+    
     //funcion agregar usuario
     public function add(){
         $nombre=$_POST['nombre'];
@@ -18,8 +19,9 @@ class UsuarioController {
         $email=$_POST['email'];
         $password=$_POST['password'];
         $direccion=$_POST['direccion'];
+        $rol = $_POST['rol']; // Nuevo campo para el rol
 
-        usuarioDao::add($nombre,$apellidos,$email,$password,$direccion);
+        usuarioDao::add($nombre,$apellidos,$email,$password,$direccion,$rol);
 
         header("Location:".url."?controller=Dashboard&action=addUsuario");
     }

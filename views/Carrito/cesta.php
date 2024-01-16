@@ -78,12 +78,12 @@
             <!-- Si existe sesion de usuario te mostrará botón comprar y botón volver tienda --> 
     <?php
       if (isset($_SESSION['user'])) {?>
-              <a  class="btn btn-dark btn-default md-btn-flat mt-2 mr-3" href="?controller=Articulo">Volver a la tienda</a>
+              <a  class="btn btn-dark btn-default md-btn-flat mt-2 mr-3" href="?controller=Articulo">Seguir comprando/Volver a la tienda</a>
               <a  class="btn btn-dark btn-primary mt-2" href="?controller=Pedido&action=addPedido">Comprar</a>
               <!--si no existe sesion de usuario te mostrará botón registrarse y volver a tienda-->
               <?php } else { ?>
-                <a  class="btn btn-dark btn-default md-btn-flat mt-2 mr-3" href="?controller=Dashboard&action=addUsuario">Registrarse</a>
-                <a  class="btn btn-dark btn-default md-btn-flat mt-2 mr-3" href="?controller=Articulo">Volver a la tienda</a>
+                <a  class="btn btn-dark btn-default md-btn-flat mt-2 mr-3" href="?controller=Dashboard&action=addNuevoUsuario">Registrarse</a>
+                <a  class="btn btn-dark btn-default md-btn-flat mt-2 mr-3" href="?controller=Articulo">Seguir comprando/Volver a la tienda</a>
                 <?php } ?>
             </div>
         

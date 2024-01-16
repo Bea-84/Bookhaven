@@ -41,11 +41,11 @@ class UsuarioDao{
     }
 
     //Función que añade un usuario de la base de datos
-    public static function add( $nombre, $apellidos, $email, $password,$direccion){
+    public static function add( $nombre, $apellidos, $email, $password,$direccion,$rol){
         $con = Database::connect();
 
-        $stmt = $con->prepare("INSERT INTO Usuarios (nombre,apellidos,email,password,direccion) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("sssss" ,$nombre,$apellidos,$email,$password,$direccion);
+        $stmt = $con->prepare("INSERT INTO Usuarios (nombre,apellidos,email,password,direccion,rol) VALUES (?,?,?,?,?,?)");
+        $stmt->bind_param("ssssss" ,$nombre,$apellidos,$email,$password,$direccion,$rol);
         $stmt->execute();
 
         

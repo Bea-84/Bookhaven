@@ -34,11 +34,8 @@
           </a>
           <ul class="dropdown-menu">
            <?php
-           // Si hay una sesión de cesta
-           if (isset($_SESSION['cesta']) && !empty($_SESSION['cesta'])) {
-               echo "<li><a class='dropdown-item' href='?controller=pedido?action=verCesta'>Ver cesta</a></li>";
-           }
            ?>
+      
         </li>
         </ul>
             
@@ -66,7 +63,7 @@
             <?php
             // Si hay una sesión de cesta
             if (isset($_SESSION['cesta']) && !empty($_SESSION['cesta'])) {
-                echo "<li><a class='dropdown-item' href=''>Ver pedidos</a></li>";
+                echo "<li><a class='dropdown-item' href='?controller=pedido&action=verPedidos'>Ver pedidos</a></li>";
             }
             ?>
             

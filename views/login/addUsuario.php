@@ -39,6 +39,15 @@
         <input type="text" name="direccion" placeholder="direccion" required/>
         <br>
        <pre></pre>
+       <!-- Agrega este código dentro del formulario -->
+       Rol:
+       <br>
+       <select name="rol" required>
+       <option value="usuario" selected>Usuario</option>
+       <!-- Puedes agregar más roles según tus necesidades -->
+       </select>
+       <br>
+       <pre></pre>
         <button type="submit">Guardar</button>
     </form>
     </section>

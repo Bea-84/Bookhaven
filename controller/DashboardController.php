@@ -49,9 +49,15 @@ class DashboardController{
     }
 
     public function addusuario(){
+
         $views = 'views/login/addUsuario.php';
         include_once 'views/login/dashboard.php';
     
+    }
+
+    public function addNuevoUsuario(){
+        include_once 'views/login/addNewUser.php';
+        
     }
 
 

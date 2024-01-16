@@ -48,7 +48,7 @@
             </div>
 
             <div>
-              <p class="mb-0">No tienes cuenta? <a href="?controller=Dashboard&action=addUsuario" class="text-white-50 fw-bold">Registrate</a>
+              <p class="mb-0">No tienes cuenta? <a href="?controller=Dashboard&action=addNuevoUsuario" class="text-white-50 fw-bold">Registrate</a>
               </p>
             </div>
 

@@ -7,14 +7,33 @@ include_once 'model/UsuarioDAO.php';
 class PedidoController{
 
 
-    //Función ver pedidos
+    //Función ver pedidos por  idUsuario
     public function verPedidos(){
-        $listapedidos = pedidoDao::getAllPedidos();
-        include_once 'views/Carrito/verPedido.php';
+        // Inicia sesión si no está iniciada
+        session_start();
     
+        // Verifica si hay un usuario autenticado
+        if (isset($_SESSION['user'])) {
+            // Obtén el ID del usuario actual
+            $idUsuario = $_SESSION['user']->getIdUsuarios();
+    
+            // Obtén los pedidos asociados al ID del usuario actual
+            $listapedidos = PedidoDAO::getPedidosByUserId($idUsuario);
+    
+
+            //cerrar sesion
+            session_write_close();
+
+
+            // Incluye la vista
+            include_once 'views/Carrito/verPedido.php';
+        } else {
+           
+            echo "No hay usuario autenticado.";
+        }
     }
   
-    //Función añadir producto al carrito y guardar cesta variable sesion
+    //Función añadir productos al carrito y guardar la cesta en variable sesion
     public function addCarrito(){
 
         $listacategorias = CategoriaDAO::getAllCategories();
@@ -47,6 +66,7 @@ class PedidoController{
     //Función añadir pedido a la BBDD
     public function addPedido(){
 
+        $listacategorias = CategoriaDAO::getAllCategories();
         //si existe una sesion cesta y usuario
         session_start();
 
@@ -63,12 +83,15 @@ class PedidoController{
         
         pedidoDao::add($precio_total,$idUsuario);
 
+        // Obtén los pedidos asociados al ID del usuario actual
+        $listapedidos = PedidoDAO::getPedidosByUserId($idUsuario);
+
         include_once 'views/Carrito/verPedido.php';
  
  
     }
 
-    //Función eliminar producto de la cesta
+    //Función eliminar productos de la cesta
     public function deleteProducto(){
        //si existe sesion cesta y recibo id del producto a eliminar
         session_start();
@@ -89,15 +112,4 @@ class PedidoController{
         
     }
 
-    //Función ver cesta
-    public function verCesta(){
-
-        $view= 'views/Carrito/cesta.php';
-        include_once 'views/Carrito/cesta.php';
-
-    }
-
-
-
-   
 }
