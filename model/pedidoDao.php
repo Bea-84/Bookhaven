@@ -3,7 +3,7 @@
 include_once 'config/database.php';
 include_once 'pedido.php';
 
-class PedidoDao{
+class PedidoDAO{
 
     //Función añade pedido a la base de datos
     public static function add($precio_total,$idUsuario){

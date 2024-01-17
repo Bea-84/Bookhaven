@@ -1,13 +1,13 @@
 <?php
 
-include_once 'model/UsuarioDao.php';
+include_once 'model/UsuarioDAO.php';
 
 class UsuarioController {
 
     //funcion listar usuarios
     public function listUsuarios(){
 
-        $listaUsuarios=UsuarioDao::getAllUsuarios();
+        $listaUsuarios=UsuarioDAO::getAllUsuarios();
         include_once 'views/usuarios/listadoUsers.php';
       
     }
@@ -21,7 +21,7 @@ class UsuarioController {
         $direccion=$_POST['direccion'];
         $rol = $_POST['rol']; // Nuevo campo para el rol
 
-        usuarioDao::add($nombre,$apellidos,$email,$password,$direccion,$rol);
+        usuarioDAO::add($nombre,$apellidos,$email,$password,$direccion,$rol);
 
         header("Location:".url."?controller=Dashboard&action=addUsuario");
     }
@@ -36,7 +36,7 @@ class UsuarioController {
 
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $user = usuarioDao::verificaLogin($email, $password);
+        $user = usuarioDAO::verificaLogin($email, $password);
     
         if ($user) {
             session_start();
@@ -80,7 +80,7 @@ class UsuarioController {
     //funcion eliminar usuario
     public function delete(){
         $id=$_GET['id'];
-        usuarioDao::delete($id);
+        usuarioDAO::delete($id);
         header("Location:".url."?controller=Dashboard&action=listUsuarios");
     }
 
@@ -93,7 +93,7 @@ class UsuarioController {
         $password=$_POST['password'];
         $direccion=$_POST['direccion'];
 
-        usuarioDao::edit($id,$nombre,$apellidos,$email,$password,$direccion);
+        usuarioDAO::edit($id,$nombre,$apellidos,$email,$password,$direccion);
         header("Location:".url."?controller=Dashboard&action=listUsuarios");
     }
     

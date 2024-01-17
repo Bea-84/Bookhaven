@@ -81,7 +81,7 @@ class PedidoController{
         //en la sesion tengo un usuario guardado necesito conseguir id y lo haré a través del método de la clase
         $idUsuario=$_SESSION['user']->getIdUsuarios();
         
-        pedidoDao::add($precio_total,$idUsuario);
+        PedidoDAO::add($precio_total,$idUsuario);
 
         // Obtén los pedidos asociados al ID del usuario actual
         $listapedidos = PedidoDAO::getPedidosByUserId($idUsuario);
@@ -109,6 +109,11 @@ class PedidoController{
         //vuelvo a mostrar la cesta
         include_once 'views/Carrito/cesta.php';
            
+        
+    }
+
+    //Función ver cesta
+    public function verCesta(){
         
     }
 

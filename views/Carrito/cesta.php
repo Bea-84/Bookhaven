@@ -82,7 +82,7 @@
               <a  class="btn btn-dark btn-primary mt-2" href="?controller=Pedido&action=addPedido">Comprar</a>
               <!--si no existe sesion de usuario te mostrará botón registrarse y volver a tienda-->
               <?php } else { ?>
-                <a  class="btn btn-dark btn-default md-btn-flat mt-2 mr-3" href="?controller=Dashboard&action=addNuevoUsuario">Registrarse</a>
+                <a  class="btn btn-dark btn-default md-btn-flat mt-2 mr-3" href="?controller=usuario&action=login">Registrarse</a>
                 <a  class="btn btn-dark btn-default md-btn-flat mt-2 mr-3" href="?controller=Articulo">Seguir comprando/Volver a la tienda</a>
                 <?php } ?>
             </div>

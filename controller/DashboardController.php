@@ -76,7 +76,7 @@ class DashboardController{
 
    public function editCat(){
 
-         $categoria = categoriaDao::getCatById($_GET['id']);
+         $categoria = categoriaDAO::getCatById($_GET['id']);
          $views = 'views/login/editarCat.php';
          include_once 'views/login/dashboard.php';
 
@@ -84,7 +84,7 @@ class DashboardController{
 
    public function editUser(){
 
-    $user = usuarioDao::getUserById($_GET['id']);
+    $user = usuarioDAO::getUserById($_GET['id']);
     $views = 'views/login/editarUser.php';
     include_once 'views/login/dashboard.php';
    }

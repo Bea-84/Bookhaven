@@ -1,6 +1,6 @@
 <?php
 
-include_once 'model/categoriaDao.php';
+include_once 'model/CategoriaDAO.php';
 
 class CategoriaController {
 
@@ -17,7 +17,7 @@ class CategoriaController {
         $nombreCategoria=$_POST['nombreCategoria'];
         $descripcion=$_POST['descripcion'];
 
-        categoriaDao::add($nombreCategoria,$descripcion);
+        categoriaDAO::add($nombreCategoria,$descripcion);
 
         header("Location:".url."?controller=Dashboard&action=addCategoria");
     }
@@ -25,7 +25,7 @@ class CategoriaController {
     //Función para eliminar una categoría
     public function delete(){
         $id=$_GET['id'];
-        categoriaDao::delete($id);
+        categoriaDAO::delete($id);
         header("Location:".url."?controller=Dashboard&action=listCategorias");
     
     }
@@ -36,7 +36,7 @@ class CategoriaController {
         $nombreCategoria = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
      
-        categoriaDao:: edit($idCategorias,$nombreCategoria,$descripcion);
+        categoriaDAO:: edit($idCategorias,$nombreCategoria,$descripcion);
         
         header("Location:".url."?controller=Dashboard&action=listCategorias");
     }

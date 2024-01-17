@@ -34,8 +34,10 @@
           </a>
           <ul class="dropdown-menu">
            <?php
+           //al seleccionar icono cesta me llevará al método ver cesta
            ?>
-      
+           <li><a class="dropdown-item" href="?controller=pedido&action=verCesta">Ver cesta</a></li>
+          </ul>
         </li>
         </ul>
             

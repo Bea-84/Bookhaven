@@ -29,7 +29,7 @@ class ArticuloController{
        $listacategorias = CategoriaDAO::getAllCategories();
 
        $id=$_GET['id'];
-       $listaarticulos = ArticuloDao::listProductosxId($id);
+       $listaarticulos = ArticuloDAO::listProductosxId($id);
        include_once 'views/articulos/listado.php';
     }
 
