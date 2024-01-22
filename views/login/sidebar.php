@@ -70,7 +70,15 @@
                                 <p>Añadir categorias</p>
                             </a>
                         </li>
-                        
+
+ <!------------------------------------------------------------------------->                   
+                        <li class="nav-header">PEDIDOS</li>
+                        <li class="nav-item">
+                            <a href="?controller=Dashboard&action=listPedidos" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>Ver pedidos</p>
+                            </a>
+                        </li>  
                        
                     </ul>
         </nav>

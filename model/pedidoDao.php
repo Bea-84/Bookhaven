@@ -5,6 +5,24 @@ include_once 'pedido.php';
 
 class PedidoDAO{
 
+    //Función para conseguir todos los pedidos
+    public static function getAllPedidos(){
+      $con = Database::connect();
+
+        $stmt = $con->prepare("SELECT * FROM pedidos");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $listapedidos = [];
+
+        while ($pedido = $result->fetch_object('Pedido')) {
+          $listapedidos[] = $pedido;
+        }
+        $con->close();
+
+        return $listapedidos;
+    }
+    
     //Función añade pedido a la base de datos
     public static function add($precio_total,$idUsuario){
        $conn = Database::connect();

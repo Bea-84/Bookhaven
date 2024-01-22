@@ -7,6 +7,12 @@ include_once 'model/UsuarioDAO.php';
 class PedidoController{
 
 
+    //Función ver todos los pedidos
+    public function listPedidos(){
+
+        $listapedidos = PedidoDAO::getAllPedidos();
+    }
+
     //Función ver pedidos por  idUsuario
     public function verPedidos(){
         // Inicia sesión si no está iniciada

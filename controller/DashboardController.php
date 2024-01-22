@@ -3,10 +3,11 @@
 include_once 'model/ArticuloDAO.php';
 include_once 'model/UsuarioDAO.php';
 include_once 'model/CategoriaDAO.php';
+include_once 'model/PedidoDao.php';
 
 class DashboardController{
 
-    //funciones para ver productos,usuarios,categorias
+    //funciones para ver productos,usuarios,categorias y pedidos
 
     public function list(){
         $listaarticulos = ArticuloDAO::getAllArticulos();
@@ -28,6 +29,13 @@ class DashboardController{
         $views = 'views/login/verCategoria.php';
         include_once 'views/login/dashboard.php';
     
+    }
+
+    public function listPedidos(){
+        $listapedidos = PedidoDAO::getAllPedidos();
+
+        $views = 'views/login/verPedido.php';
+        include_once 'views/login/dashboard.php';
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------
