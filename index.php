@@ -18,6 +18,8 @@ if(!isset($_GET['controller'])){
     
     //Se verifica si existe el controladorde la aplicación.
     if(class_exists($nombre_controlador)){
+
+        
         $controller = new $nombre_controlador();
 
         if(isset($_GET['action']) &&  method_exists($controller, $_GET['action']) ){
@@ -27,6 +29,7 @@ if(!isset($_GET['controller'])){
         }
 
         $controller->$action();
+        
     }else{
         header("Location:".url."?controller=Articulo");
     }
