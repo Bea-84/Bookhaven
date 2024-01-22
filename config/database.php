@@ -2,7 +2,7 @@
 
 class DataBase{
     
-    //Método para conexión servidor local
+    //Método para conexión servidor local 
     public static function connect($host='localhost', $user='root', $pwd='ilerna1234', $db='Bookhaven'){
       
         $con = new mysqli($host, $user, $pwd, $db);
