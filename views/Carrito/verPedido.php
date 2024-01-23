@@ -33,17 +33,26 @@
                 </thead>
                 <tbody>
                 <?php
-    foreach($listapedidos as $pedido)
-    {
+foreach ($listapedidos as $pedido) {
+    // Obtén la fecha del pedido
+    $fechaPedido = new DateTime($pedido->getfecha_compra());
+    
+    // Obtén la fecha actual
+    $fechaActual = new DateTime();
+    
+    // Compara las fechas para mostrar solo los pedidos del día actual
+    if ($fechaPedido->format('Y-m-d') == $fechaActual->format('Y-m-d')) {
         ?>
-          <tr>
-                   
-                    <td><?= $pedido->getidPedidos() ?></td>
-                    <td><?= $pedido->getprecio_total() ?>€</td>
-                    <td><?= $pedido->getfecha_compra() ?></td>
-                    <td><?= $pedido->getidUsuario() ?></td>
-                    </tr>
-                    <?php } ?>
+        <tr>
+            <td><?= $pedido->getidPedidos() ?></td>
+            <td><?= $pedido->getprecio_total() ?>€</td>
+            <td><?= $pedido->getfecha_compra() ?></td>
+            <td><?= $pedido->getidUsuario() ?></td>
+        </tr>
+    <?php
+    }
+}
+?>
                     </tbody>
               </table>
             </div>

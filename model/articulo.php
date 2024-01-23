@@ -7,8 +7,8 @@ class Articulo
     private $precio;
     private $descripcion;
     private $idCategoria;
-    public $img;
-    public $stock;
+    private $img;
+    private $stock;
 
     public function __construct(){    
     }
