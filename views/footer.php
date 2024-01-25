@@ -59,10 +59,10 @@
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a class="text-body" href="#!">Localiza tu tienda</a>
+                            <a class="text-body" href="https://maps.app.goo.gl/sEcU5RGiSfhwuMKfA">Localiza tu tienda</a>
                         </li>
                         <li>
-                            <a class="text-body" href="#!">Sobre nosotros</a>
+                            <a class="text-body" href="#!">Quienes somos</a>
                         </li>
                         <li>
                             <a class="text-body" href="#!">Nuestros servicios</a>
