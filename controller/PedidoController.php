@@ -7,13 +7,13 @@ include_once 'model/UsuarioDAO.php';
 class PedidoController{
 
 
-    //Función ver todos los pedidos
+    //Función ver todos los pedidos desde admin
     public function listPedidos(){
 
         $listapedidos = PedidoDAO::getAllPedidos();
     }
 
-    //Función ver pedidos por  idUsuario
+    //Función ver pedidos por idUsuario
     public function verPedidos(){
         // Inicia sesión si no está iniciada
         session_start();
@@ -93,6 +93,9 @@ class PedidoController{
         $listapedidos = PedidoDAO::getPedidosByUserId($idUsuario);
 
         include_once 'views/Carrito/verPedido.php';
+
+         //una vez hecha la compra y añadido pedido a la BBDD borro la cesta
+         unset($_SESSION['cesta']);
  
  
     }
@@ -120,7 +123,17 @@ class PedidoController{
 
     //Función ver cesta
     public function verCesta(){
+        session_start();
         
+        //si existe la cesta
+        if(isset($_SESSION['cesta'])&& count($_SESSION['cesta'])>0){
+            //muestro la cesta
+            include_once 'views/Carrito/cesta.php';
+        }
+        else{
+            include_once 'views/Carrito/cestaVacia.php';
+            
+        }
     }
 
 }

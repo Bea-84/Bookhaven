@@ -67,14 +67,7 @@
         if (isset($_SESSION['user'])) : ?>
             <li><span class="dropdown-item"><?php echo $_SESSION['user']->getNombre(); ?></span></li>
             <li><a class="dropdown-item" href="?controller=usuario&action=logout">Cerrar sesión</a></li>
-            
-            <?php
-            // Si hay una sesión de cesta
-            if (isset($_SESSION['cesta']) && !empty($_SESSION['cesta'])) {
-                echo "<li><a class='dropdown-item' href='?controller=pedido&action=verPedidos'>Ver pedidos</a></li>";
-            }
-            ?>
-            
+              
         <?php else: ?>
             <!-- Si no hay sesión de usuario -->
             <li><a class="dropdown-item" href="?controller=usuario&action=login">Iniciar sesión</a></li>
