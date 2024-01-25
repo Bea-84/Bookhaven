@@ -36,6 +36,9 @@
                 <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Ha olvidado su contraseña?</a></p>
 
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Iniciar sesión</button>
+                <!--Si el usuario cuando da al inicio de sesión no esta registrado o se equivoca al introducir los datos vuelverá a esta vista-->
+              
+
               </form>
 
 

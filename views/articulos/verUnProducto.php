@@ -38,6 +38,12 @@
                             <p class="text-white">Cantidad:</p>
                             <input type="number" name="cantidad" value="1" min="1" max="10">
                             <input type="hidden" name="idProducto" value="<?= $articulo->getIdProductos() ?>">
+                            <?php
+                            //si el stock es 0 no se muestra el botón añadir al carrito y se muestra un mensaje de que no hay stock disponible.
+                            if($articulo->getStock() == 0)
+                            {
+                                echo '<p class="text-white">En estos momentos no disponemos de este producto,disculpen las molestias y consulte más adelante</p>';
+                            }?>
                             <button class="btn btn-outline-success btn-outline-light" type="submit" name="accion" value="anadir">Añadir al carrito</button>
                             
                         </form>

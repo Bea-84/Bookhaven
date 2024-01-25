@@ -1,11 +1,11 @@
 <?php
 
 //Conexión desde Ilerna
-//define("url","http://localhost/Bookhaven/");
+define("url","http://localhost/Bookhaven/");
 //-------------------------------------------------------------------------------------------
 
 //Conexión desde casa
-define("url","http://localhost:8080/Bookhaven/");
+//define("url","http://localhost:8080/Bookhaven/");
 //----------------------------------------------------------------------------------------
 
 //Conexión desde servidor infinity

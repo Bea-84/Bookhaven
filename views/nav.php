@@ -6,7 +6,7 @@
     </a>
     <button class="navbar-toggler  navbar-dark bg-white" type="button" data-bs-toggle="collapse" 
      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon "></span>
+      <span class="navbar-toggler-icon bg-dark "></span>
     </button>
 
     <!--DESPLEGABLE CATEGORIAS-->
@@ -56,7 +56,7 @@
         </svg>
     </a>
 
-  <ul class="dropdown-menu ">
+  <ul class=" dropdown-menu dropdown-menu-end ">
         <?php 
         // Si no hay sesión iniciada, se inicia una nueva. Si ya existe una sesión, se mantiene la misma.
         if (!isset($_SESSION)) {

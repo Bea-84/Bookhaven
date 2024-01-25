@@ -75,10 +75,9 @@ class ArticuloController{
 
         //recibo id producto para poder hacer la consulta
         $id=$_POST['id'];
-        $stock=ArticuloDAO::consultaStock($id);
-        //si el stock es igual a cero no podremos dar al boton añadir al carrito
-        
-            
+        //consualto con la BBDD el stock del producto con el id recibido
+        $articulo=ArticuloDAO::consultaStock($id);
+          
     }
     
 }

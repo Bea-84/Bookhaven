@@ -61,8 +61,8 @@ class UsuarioController {
             exit();
         }
         else {
-            // no está registrado, te lleva a la zona de administrador para añadir usuario
-            header("Location: " . url . "?controller=Dashboard&action=addUsuario");
+            // no está registrado, te vuelve a arealogin.php para que introduzcas los datos bien o te registres seleccionando la opción ya existente
+            header("Location: " . url . "?controller=usuario&action=login");
             exit();
 
         }
