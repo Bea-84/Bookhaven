@@ -20,8 +20,10 @@ class UsuarioController {
         $password=$_POST['password'];
         $direccion=$_POST['direccion'];
         $rol = $_POST['rol']; // Nuevo campo para el rol
-
-        usuarioDAO::add($nombre,$apellidos,$email,$password,$direccion,$rol);
+        //encripto password y lo guardo en nueva variable 
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+        
+        usuarioDAO::add($nombre,$apellidos,$email,$password_hash,$direccion,$rol);
 
         header("Location:".url."?controller=Dashboard&action=addUsuario");
     }
@@ -34,39 +36,39 @@ class UsuarioController {
     //funcion verifica login
     public function verificaLogin(){
 
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $user = usuarioDAO::verificaLogin($email, $password);
-    
-        if ($user) {
-            session_start();
-            $_SESSION['user'] = $user;
-    
-            if ($user->getRol() == 'administrador') {
-                // si está registrado  y es admin, lleva a la zona de administrador
-                header("Location: " . url . "?controller=Dashboard&action=listUsuarios");
-                exit();
-            } elseif ($user->getRol() == 'usuario') {
-                // si está registrado y no es admin, te lleva a la tienda
-                header("Location: " . url . "?controller=Articulo");
-                exit();
-            } elseif ($user->getRol() == 'usuario' && isset($_SESSION['cesta'])) {
-                // si está registrado, no es admin y hay una sesión con la cesta, te lleva a mi cesta
-                header("Location: " . url . "?controller=Pedido&action=addCarrito");
-                exit();
-            }
-        } elseif (isset($_SESSION['cesta']))  {
-            //no esta registrado pero existe una sesion con la cesta y se acaba de registrar como usuario te llevará a cesta
-            header("Location: " . url . "?controller=Pedido&action=addCarrito");
-            exit();
-        }
-        else {
-            // no está registrado, te vuelve a arealogin.php para que introduzcas los datos bien o te registres seleccionando la opción ya existente
-            header("Location: " . url . "?controller=usuario&action=login");
-            exit();
+          //recibo un mail y un password
+          $email = $_POST['email'];
+          $password = $_POST['password'];
 
+         // Obtener el hash almacenado en la base de datos a través del mail de usuario
+         $storedHash = UsuarioDAO::getPasswordHash($email);
+
+        // Verificar la contraseña usando password_verify
+        if (password_verify($password, $storedHash)) {
+            // La contraseña es correcta
+            //busco en la BBDD al usuario a través del mail
+            $user = usuarioDAO::getUserBymail($email);
+                 if ($user) {
+                 //si usuario existe inicio session
+                 session_start();
+                 $_SESSION['user'] = $user; // Guardar el usuario en la sesión
+                 if ($user->getRol() == 'administrador') {
+                 //si está registrado como admin redirecciono a panel admin
+                 header("Location:" . url . "?controller=Dashboard&action=listUsuarios");
+                 } elseif ($user->getRol() == 'usuario') {
+                 //si está registrado como user redirecciono a tienda
+                 header("Location:" . url . "?controller=Articulo");
+                 } else {
+                 // no está registrado, te vuelve a arealogin.php para que introduzcas los datos bien o te registres seleccionando la opción ya existente
+                 header("Location: " . url . "?controller=usuario&action=login");
+                 }
+                           }  
+        } else {
+            // La contraseña es incorrecta
+            echo "La contraseña es incorrecta.";
         }
     }
+
 
     //función cerrar session
     public function logout(){

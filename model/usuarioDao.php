@@ -24,12 +24,29 @@ class UsuarioDao{
         return $listaUsuarios;
     }
 
-    //Función que devuelve un usuario de la base de datos
-    public static function  verificaLogin($email,$password){
+    //Función que obtiene el hash de la contraseña de un usuario por su email
+    public static function getPasswordHash($email){
         $con = Database::connect();
 
-        $stmt = $con->prepare("SELECT * FROM Usuarios WHERE email=? AND password=?");
-        $stmt->bind_param("ss",$email,$password);
+        $stmt = $con->prepare("SELECT password FROM Usuarios WHERE email=?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $row = $result->fetch_assoc();
+        $passwordHash = $row['password'];
+
+       $con->close();
+
+       return $passwordHash;
+    }
+
+    //Función que devuelve un usuario de la base de datos por su mail
+    public static function  getUserBymail($email){
+        $con = Database::connect();
+
+        $stmt = $con->prepare("SELECT * FROM Usuarios WHERE email=? ");
+        $stmt->bind_param("s",$email);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -41,11 +58,11 @@ class UsuarioDao{
     }
 
     //Función que añade un usuario de la base de datos
-    public static function add( $nombre, $apellidos, $email, $password,$direccion,$rol){
+    public static function add( $nombre, $apellidos, $email, $password_hash,$direccion,$rol){
         $con = Database::connect();
 
         $stmt = $con->prepare("INSERT INTO Usuarios (nombre,apellidos,email,password,direccion,rol) VALUES (?,?,?,?,?,?)");
-        $stmt->bind_param("ssssss" ,$nombre,$apellidos,$email,$password,$direccion,$rol);
+        $stmt->bind_param("ssssss" ,$nombre,$apellidos,$email,$password_hash,$direccion,$rol);
         $stmt->execute();
 
         
