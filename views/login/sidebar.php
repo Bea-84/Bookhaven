@@ -34,7 +34,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="?controller=Dashboard&action=addUsuario" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
+                                <i class="nav-icon fas fa-user-plus"></i>
                                 <p>Añadir Usuario</p>
                             </a>
                         </li>
@@ -44,13 +44,13 @@
                         <li class="nav-header">PRODUCTOS</li>
                         <li class="nav-item">
                             <a href="?controller=Dashboard" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
+                                <i class="nav-icon fas fa-eye"></i>
                                 <p>Ver productos</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="?controller=Dashboard&action=addProducto" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
+                                <i class="nav-icon fas fa-plus"></i>
                                 <p>Añadir productos</p>
                             </a>
                         </li>
@@ -60,13 +60,13 @@
                         <li class="nav-header">CATEGORIAS</li>
                         <li class="nav-item">
                             <a href="?controller=Dashboard&action=listCategorias" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
+                                <i class="nav-icon fas fa-list"></i>
                                 <p>Ver categorias</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="?controller=Dashboard&action=addCategoria" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
+                                <i class="nav-icon fas fa-plus-square"></i>
                                 <p>Añadir categorias</p>
                             </a>
                         </li>
@@ -75,10 +75,11 @@
                         <li class="nav-header">PEDIDOS</li>
                         <li class="nav-item">
                             <a href="?controller=Dashboard&action=listPedidos" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
+                                <i class="nav-icon fas fa-shopping-cart"></i>
                                 <p>Ver pedidos</p>
                             </a>
                         </li>  
+                       
                        
                     </ul>
         </nav>

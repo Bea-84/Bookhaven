@@ -25,7 +25,10 @@ class UsuarioController {
         
         usuarioDAO::add($nombre,$apellidos,$email,$password_hash,$direccion,$rol);
 
-        header("Location:".url."?controller=Dashboard&action=addUsuario");
+        //Una vez registrado el nuevo usuario en la BBDD te redirigirá al método verifica login
+        $this->verificaLogin($email,$password);
+
+        //header("Location:".url."?controller=Dashboard&action=addUsuario");
     }
     
     //funcion dirige al area login

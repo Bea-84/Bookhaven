@@ -1,7 +1,7 @@
 <?php
 
 include_once 'config/database.php';
-include_once 'Articulo.php';
+include_once 'articulo.php';
 
 class ArticuloDAO
 {

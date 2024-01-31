@@ -97,15 +97,28 @@ class UsuarioDao{
         return $user;
     }
 
-    //Función para editar un usuario
-    public static function edit($id,$nombre,$apellidos,$email,$password,$direccion){
-        $con=Database::connect();
-        $stmt = $con->prepare("UPDATE usuarios SET nombre = ?,  apellidos = ? , email = ?,  password = ?, direccion = ? WHERE idUsuarios = ?");
-        $stmt->bind_param("sssssi",$nombre,$apellidos,$email,$password,$direccion,$id);
-        $stmt->execute();
-        $con->close();
+    // Función para editar un usuario
+    public static function edit($id, $nombre, $apellidos, $email, $password, $direccion){
+       $con = Database::connect();
 
+       // Verificar si se proporcionó un nuevo password
+       if (!empty($password)) {
+        // Si se proporcionó un nuevo password, encriptarlo
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+        // Actualizar el password en la base de datos solo si se proporcionó un nuevo password
+        $stmt = $con->prepare("UPDATE usuarios SET nombre = ?,  apellidos = ? , email = ?,  password = ?, direccion = ? WHERE idUsuarios = ?");
+        $stmt->bind_param("sssssi", $nombre, $apellidos, $email, $password_hash, $direccion, $id);
+       } else {
+        // No se proporcionó un nuevo password, actualizar sin cambiar el password
+        $stmt = $con->prepare("UPDATE usuarios SET nombre = ?,  apellidos = ? , email = ?, direccion = ? WHERE idUsuarios = ?");
+        $stmt->bind_param("ssssi", $nombre, $apellidos, $email, $direccion, $id);
+       }
+
+       $stmt->execute();
+       $con->close();
     }
+
 
 }
 

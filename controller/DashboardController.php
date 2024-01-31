@@ -3,7 +3,7 @@
 include_once 'model/ArticuloDAO.php';
 include_once 'model/UsuarioDAO.php';
 include_once 'model/CategoriaDAO.php';
-include_once 'model/PedidoDao.php';
+include_once 'model/PedidoDAO.php';
 
 class DashboardController{
 
