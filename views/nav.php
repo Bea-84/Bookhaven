@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg bg-dark">
   <div class="container-fluid">
     <a href="?controller=Articulo" class="brand-link">
-      <img src="dist/img/logo3.jpg" alt="Logo" class="brand-image" style="width: 3rem;">
+      <img src="img/casa.jpg" alt="Logo" class="brand-image" style="width: 3rem;">
     </a>
     <button class="navbar-toggler  navbar-dark bg-white" type="button" data-bs-toggle="collapse" 
      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
