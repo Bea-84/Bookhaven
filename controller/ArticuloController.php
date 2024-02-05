@@ -1,13 +1,14 @@
 <?php
 
 include_once 'model/ArticuloDAO.php';
+include_once 'model/CategoriaDAO.php';
 
 class ArticuloController{
 
     //función para ver todos los productos 
     public function list(){
-        $listacategorias = CategoriaDAO::getAllCategories();
 
+        $listacategorias = CategoriaDAO::getAllCategories();
         $listaarticulos = ArticuloDAO::getAllArticulos();
         include_once 'views/articulos/listado.php';
     }

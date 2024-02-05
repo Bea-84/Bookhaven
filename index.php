@@ -1,6 +1,7 @@
 <?php
 
 
+
 include_once 'config/parameters.php';
 include_once 'controller/ArticuloController.php';
 include_once 'controller/UsuarioController.php';
@@ -15,7 +16,6 @@ include_once 'controller/PedidoController.php';
         header("Location:".url."?controller=Articulo");
     }else{
         $nombre_controlador = $_GET['controller'].'Controller';
-        
         //Se verifica si existe el controladorde la aplicación.
         if(class_exists($nombre_controlador)){
 
@@ -30,7 +30,7 @@ include_once 'controller/PedidoController.php';
 
             $controller->$action();
             
-            //echo action_default . "...";
+            
             
         }else{
             header("Location:".url."?controller=Articulo");

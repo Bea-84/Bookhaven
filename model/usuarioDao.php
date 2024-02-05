@@ -1,7 +1,7 @@
 <?php
 
 include_once 'config/database.php';
-include_once 'Usuario.php';
+include_once 'usuario.php';
 
 class UsuarioDao{
 
@@ -10,7 +10,7 @@ class UsuarioDao{
 
         $con = Database::connect();
 
-        $stmt = $con->prepare("SELECT * FROM Usuarios");
+        $stmt = $con->prepare("SELECT * FROM usuarios");
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -28,7 +28,7 @@ class UsuarioDao{
     public static function getPasswordHash($email){
         $con = Database::connect();
 
-        $stmt = $con->prepare("SELECT password FROM Usuarios WHERE email=?");
+        $stmt = $con->prepare("SELECT password FROM usuarios WHERE email=?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -45,7 +45,7 @@ class UsuarioDao{
     public static function  getUserBymail($email){
         $con = Database::connect();
 
-        $stmt = $con->prepare("SELECT * FROM Usuarios WHERE email=? ");
+        $stmt = $con->prepare("SELECT * FROM usuarios WHERE email=? ");
         $stmt->bind_param("s",$email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -61,7 +61,7 @@ class UsuarioDao{
     public static function add( $nombre, $apellidos, $email, $password_hash,$direccion,$rol){
         $con = Database::connect();
 
-        $stmt = $con->prepare("INSERT INTO Usuarios (nombre,apellidos,email,password,direccion,rol) VALUES (?,?,?,?,?,?)");
+        $stmt = $con->prepare("INSERT INTO usuarios (nombre,apellidos,email,password,direccion,rol) VALUES (?,?,?,?,?,?)");
         $stmt->bind_param("ssssss" ,$nombre,$apellidos,$email,$password_hash,$direccion,$rol);
         $stmt->execute();
 
@@ -74,7 +74,7 @@ class UsuarioDao{
     public static function delete($idUsuarios){
         $con = Database::connect();
 
-        $stmt = $con->prepare("DELETE FROM Usuarios WHERE idUsuarios=?");
+        $stmt = $con->prepare("DELETE FROM usuarios WHERE idUsuarios=?");
         $stmt->bind_param("i" ,$idUsuarios);
         $stmt->execute();
 

@@ -1,26 +1,24 @@
 <?php
 
 include_once 'config/database.php';
-include_once 'Categoria.php';
+include_once 'categoria.php';
 
 class CategoriaDAO {
 
     //Función que devuelve todas las categorías de la base de datos
     public static function getAllCategories(){
-
         $con = Database::connect();
-
         $stmt = $con->prepare("SELECT * FROM categorias");
         $stmt->execute();
         $result = $stmt->get_result();
-
         $listacategorias = [];
 
         while ($categoria = $result->fetch_object('Categoria')) {
-            $listacategorias[] = $categoria;
+                      $listacategorias[] = $categoria;
         }
-        $con->close();
 
+        $con->close();
+        
         return $listacategorias;
     }
 

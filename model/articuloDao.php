@@ -9,14 +9,12 @@ class ArticuloDAO
     //Función conseguir todos los productos
     public static function getAllArticulos()
     {
-        $con = Database::connect();
 
-        $stmt = $con->prepare("SELECT * FROM Productos");
+        $con = Database::connect();
+        $stmt = $con->prepare("SELECT * FROM productos");
         $stmt->execute();
         $result = $stmt->get_result();
-
         $listaarticulos = [];
-
         while ($articulo = $result->fetch_object('Articulo')) {
             $listaarticulos[] = $articulo;
         }
@@ -28,7 +26,7 @@ class ArticuloDAO
     //Función conseguir un producto por su id
     public static function getArticuloById($idProductos){
         $con = Database::connect();
-        $stmt = $con->prepare("SELECT * FROM Productos WHERE idProductos = ?");
+        $stmt = $con->prepare("SELECT * FROM productos WHERE idProductos = ?");
         $stmt->bind_param("i", $idProductos);
         $stmt->execute();
 
@@ -44,7 +42,7 @@ class ArticuloDAO
     //Función conseguir un producto por su id de categoria
     public static function listProductosxId($idCategoria){
         $con=Database::connect();
-        $stmt = $con->prepare("SELECT * FROM Productos WHERE idcategoria = ?");
+        $stmt = $con->prepare("SELECT * FROM productos WHERE idcategoria = ?");
         $stmt->bind_param("i", $idCategoria);
         $stmt->execute();
 
@@ -63,7 +61,7 @@ class ArticuloDAO
     //Función añadir producto
     public static function add( $nombre, $precio, $descripcion, $idCategoria,$stock){
         $con=Database::connect();
-        $stmt = $con->prepare("INSERT INTO Productos (nombre, precio, descripcion,idCategoria,stock) VALUES ( ?, ?, ?,?,?)");
+        $stmt = $con->prepare("INSERT INTO productos (nombre, precio, descripcion,idCategoria,stock) VALUES ( ?, ?, ?,?,?)");
         $stmt->bind_param("sssii", $nombre, $precio, $descripcion, $idCategoria,$stock);
         $stmt->execute();
         $con->close();
@@ -73,7 +71,7 @@ class ArticuloDAO
     //Función eliminar producto
     public static function delete($idProductos){
         $con=Database::connect();
-        $stmt = $con->prepare("DELETE FROM Productos WHERE idProductos = ?");
+        $stmt = $con->prepare("DELETE FROM productos WHERE idProductos = ?");
         $stmt->bind_param("i", $idProductos);
         $stmt->execute();
         $con->close();
@@ -82,7 +80,7 @@ class ArticuloDAO
     //Función editar producto
     public static function edit( $id,$nombre, $precio, $descripcion,$stock,$idCategoria){
         $con=Database::connect();
-        $stmt = $con->prepare("UPDATE Productos SET nombre = ?, precio = ?, descripcion = ?, idCategoria = ?, stock = ? WHERE idProductos = ?");
+        $stmt = $con->prepare("UPDATE productos SET nombre = ?, precio = ?, descripcion = ?, idCategoria = ?, stock = ? WHERE idProductos = ?");
         $stmt->bind_param("sdsiii", $nombre, $precio, $descripcion, $idCategoria,$stock,$id);
         $stmt->execute();
         $con->close();
@@ -92,7 +90,7 @@ class ArticuloDAO
     //Función consultar stock
     public static function consultaStock($idProductos){
         $con=Database::connect();
-        $stmt = $con->prepare("SELECT stock FROM Productos WHERE idProductos = ?");
+        $stmt = $con->prepare("SELECT stock FROM productos WHERE idProductos = ?");
         $stmt->bind_param("i", $idProductos);
         $stmt->execute();
 

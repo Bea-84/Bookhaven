@@ -11,21 +11,21 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="img/masleidos.jpg" class="d-block w-100 img-fluid" alt="...">
+      <img src="img/l.jpg" class="d-block w-100 img-fluid" alt="...">
       <div class="carousel-caption d-none d-md-block text-white">
         <h5 class="display-3">Más leídos</h5>
         
       </div>
     </div>
     <div class="carousel-item">
-      <img src="img/novedades.jpg" class="d-block w-100 img-fluid" alt="...">
+      <img src="img/n.jpg" class="d-block w-100 img-fluid" alt="...">
       <div class="carousel-caption d-none d-md-block text-white ">
         <h5 class="display-3">Novedades</h5>
         
       </div>
     </div>
     <div class="carousel-item">
-      <img src="img/recomendados.jpg" class="d-block w-100 img-fluid" alt="...">
+      <img src="img/r.jpg" class="d-block w-100 img-fluid" alt="...">
       <div class="carousel-caption d-none d-md-block text-white ">
         <h5 class="display-3" >Recomendados</h5>
         
