@@ -26,11 +26,10 @@
                 <thead>
                   <tr>
                     <!-- Cabecera tabla -->
-                    <th class="text-center py-3 px-4" style="min-width: 400px;">Imagen</th>
-                    <th class="text-center py-3 px-4" style="min-width: 400px;">Nombre del producto</th>
-                    <th class="text-right py-3 px-4" style="width: 100px;">Precio</th>
-                    <th class="text-center py-3 px-4" style="width: 120px;">Cantidad</th>
-                    <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
+                    <th class="text-center py-3 px-4" style="width: 100px;">Imagen</th>
+                    <th class="text-center py-3 px-4" style="width: 100px;">Precio</th>
+                    <th class="text-center py-3 px-4" style="width: 100px;">Cantidad</th>
+                    <th class="text-center py-3 px-4" style="width: 100px;">Total</th>
                     <th class="text-center py-3 px-4" style="width: 100px;">Acciones</th>
                     
                   </tr>
@@ -47,7 +46,6 @@
 
                   <tr>
                    <td><img class="" src="img/<?= $lineacarrito['articulo']->getImg() ?>" alt="Card image cap"></td>
-                    <td><?= $lineacarrito['articulo']->getNombre() ?></td>
                     <td><?= $lineacarrito['articulo']->getPrecio() ?></td>
                     <td><?= $lineacarrito['cantidad'] ?></td>
                     <td><?= $lineacarrito['articulo']->getPrecio() * $lineacarrito['cantidad'] ?>  €</td>

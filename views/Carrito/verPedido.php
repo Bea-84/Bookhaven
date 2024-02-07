@@ -23,10 +23,10 @@
                 <thead>
                   <tr>
                     <!-- Cabecera tabla -->
-                    <th class="text-center py-3 px-4" style="min-width: 400px;">Numero pedido:</th>
-                    <th class="text-center py-3 px-4" style="min-width: 400px;">Precio total:</th>
-                    <th class="text-right py-3 px-4" style="width: 100px;">Fecha pedido:</th>
-                    <th class="text-center py-3 px-4" style="width: 120px;">Numero Usuario</th>
+                    <th class="text-center py-3 px-4" style="width: 100px;">Numero pedido:</th>
+                    <th class="text-center py-3 px-4" style="width: 100px;">Precio total:</th>
+                    <th class="text-center py-3 px-4" style="width: 100px;">Fecha pedido:</th>
+                    <th class="text-center py-3 px-4" style="width: 100px;">Numero Usuario</th>
                     
                     
                   </tr>

@@ -2,10 +2,11 @@
 <pre></pre>
 <section>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-10 col-xl-8 text-center">
-      <h3 class="mb-4">VALORACIONES</h3>
-     
-    </div>
+  <div class="text-center">
+    <hr>
+    <h2>VALORACIONES</h2>
+    <hr>
+</div>
   </div>
 
   <div class="row text-center">

@@ -12,55 +12,48 @@
 <?php include_once 'views/nav.php'; ?>
 <?php include_once 'views/header.php'; ?>
 
+
 <div class="text-center">
+    <hr>
     <h2>PRODUCTOS</h2>
+    <hr>
 </div>
 
-<pre></pre>
 
-
-
-<div class="row">
-    <?php
-    foreach ($listaarticulos as $articulo) {
-    ?>
-        <div class="card-p col-3 mb-4 ms-4 me-4 border-dark bg-dark" style="width: 20rem;">
-            <img class="card-img-top " src="img/<?= $articulo->getImg() ?>" alt="Card image cap">
-            <div class="card-body">
-                <pre></pre>
-            <p class="text-white">Nombre:</p>
-                <h5 class="card-title text-white"><?= $articulo->getNombre() ?></h5>
-                <pre></pre>
-                <p class="text-white">Descripción:</p>
-                <p class="card-text text-white"><?= $articulo->getDescripcion() ?></p>
-                <p class="text-white">Precio:</p>
-                <p class="card-text text-white"><?= $articulo->getPrecio() ?> €</p>
-
-                <!-- Botón de ver producto   -->
-                <button class="btn btn-outline-success btn-outline-light" type="button" onclick="location.href='?controller=Articulo&action=listProductoxId&id=<?= $articulo->getIdProductos() ?>'">Ver producto</button>
-                <pre></pre>
-                 <!--Botón añadir al carrito-->
-                 <div class="ms-auto">
+<div class="container">
+    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-4">
+        <?php foreach ($listaarticulos as $articulo) { ?>
+        <div class="col">
+            <div class="card h-100">
+                <img class="card-img-top" src="img/<?= $articulo->getImg() ?>" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="text-dark text-uppercase">Nombre:</h5>
+                    <p class="card-title text-dark"><?= $articulo->getNombre() ?></p>
+                    <h5 class="text-dark text-uppercase">Descripción:</h5>
+                    <p class="card-text text-dark"><?= $articulo->getDescripcion() ?></p>
+                    <h5 class="text-dark text-uppercase">Precio:</h5>
+                    <p class="card-text text-dark"><?= $articulo->getPrecio() ?> €</p>
+                    <!-- Botón de ver producto -->
+                    <button class="btn btn-outline-success btn-outline-dark" type="button" onclick="location.href='?controller=Articulo&action=listProductoxId&id=<?= $articulo->getIdProductos() ?>'">Ver producto</button>
+                    <pre></pre>
+                    <!-- Botón añadir al carrito -->
+                    <div class="ms-auto mb-3">
                         <form method="post" action="?controller=Pedido&action=addCarrito">
-                            <p class="text-white">Cantidad:</p>
+                            <h5 class="text-dark text-uppercase">Cantidad:</h5>
                             <input type="number" name="cantidad" value="1" min="1" max="10">
                             <input type="hidden" name="idProducto" value="<?= $articulo->getIdProductos() ?>">
-                            <?php
-                            //si el stock es 0 no se muestra el botón añadir al carrito y se muestra un mensaje de que no hay stock disponible.
-                            if($articulo->getStock() == 0)
-                            {
-                                echo '<p class="text-white">En estos momentos no disponemos de este producto,disculpen las molestias y consulte más adelante</p>';
-                            }?>
-                            <button class="btn btn-outline-success btn-outline-light" type="submit" name="accion" value="anadir">Añadir al carrito</button>
-                            
+                            <?php if ($articulo->getStock() == 0) {
+                                echo '<p class="text-dark">En estos momentos no disponemos de este producto,disculpen las molestias y consulte más adelante</p>';
+                            } ?>
+                            <pre></pre>
+                            <button class="btn btn-outline-success btn-outline-dark" type="submit" name="accion" value="anadir">Añadir al carrito</button>
                         </form>
                     </div>
+                </div>
             </div>
-            <pre></pre>
         </div>
-        
-    <?php } ?>
-    
+        <?php } ?>
+    </div>
 </div>
 
 <?php include_once 'views/Testimonials.php'; ?>
@@ -75,3 +68,7 @@
 
 </body>
 </html>
+
+
+
+
