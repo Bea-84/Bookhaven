@@ -58,7 +58,7 @@ class PedidoDAO{
     }
 
     //Función añadir detalle pedido a la BBDD
-    public function addDetPedido($idPedido,$idProducto,$precio,$cantidad){
+    public static function addDetPedido($idPedido,$idProducto,$precio,$cantidad){
       $con = Database::connect();
       $stmt = $con->prepare("INSERT INTO pedidos_has_productos (Pedidos_idPedidos,Productos_idProductos,precio,cantidad)VALUES(?,?,?,?) ");
       $stmt->bind_param("iidi",$idPedido,$idProducto,$precio,$cantidad);

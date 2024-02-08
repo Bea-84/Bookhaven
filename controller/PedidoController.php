@@ -64,8 +64,6 @@ class PedidoController{
             'total' => $articulo->getPrecio() * $_POST['cantidad'],
         );
 
-       
-
         include_once 'views/Carrito/cesta.php';
         
 
@@ -91,10 +89,9 @@ class PedidoController{
         
         //Declaro variable que me devolverá el metodo
         $idPedido = PedidoDAO::add($precio_total,$idUsuario);
-        // Llamar al método que necesitas pasando el ID del pedido 
+        // Envio a método id pedido 
         $this->addDetPedido($idPedido);
         
-
         // Obtén los pedidos asociados al ID del usuario actual
         $listapedidos = PedidoDAO::getPedidosByUserId($idUsuario);
 
@@ -142,39 +139,25 @@ class PedidoController{
         }
     }
 
-    public function addDetPedido() {
-        //inicio sesion
-        session_start();
-    
-        // Recolectar los datos de la cesta
-        $detallesPedido = array(); // Array para almacenar los detalles del pedido
-        foreach ($_SESSION['cesta'] as $lineacarrito) {
-            $idProducto = $lineacarrito["articulo"]->getIdProductos();
-            $precio = $lineacarrito["articulo"]->getPrecio();
-            $cantidad = $lineacarrito["cantidad"];
-            
-            // Almacenar los detalles del pedido en un array
-            $detallesPedido[] = array(
-                'Productos_idProductos' => $idProducto,
-                'precio' => $precio,
-                'cantidad' => $cantidad
-            );
-        }
-    
-        // Recolectar el ID del pedido que  recibo este método
-        $idPedido = $this->addPedido();
-        //Añado id al array detalle Pedido
-        $detallesPedido[]=array(
-            'Pedidos_idPedidos' => $idPedido
-        );
-
-        //Envio datos a addDetPedido del Pedido DAO
-        PedidoDao::addDetPedido($idProducto,$precio,$cantidad,$idPedido);
+    //Función añadir detalle pedido a la BBDD
+    public function addDetPedido($idPedido) {
         
+        
+        // Verificar si existe la cesta en la sesión y si no está vacía
+        if(isset($_SESSION['cesta']) && !empty($_SESSION['cesta'])) {
+            // En cada bucle enviar datos a la BBDD
+            foreach ($_SESSION['cesta'] as $lineacarrito) {
+                $idProducto = $lineacarrito["articulo"]->getIdProductos();
+                $precio = $lineacarrito["articulo"]->getPrecio();
+                $cantidad = $lineacarrito["cantidad"];
+    
+                // Llamar al método addDetPedido del PedidoDAO para almacenar los detalles del pedido en la base de datos
+                PedidoDao::addDetPedido($idPedido, $idProducto, $precio, $cantidad);
+            }
+        } else {
+
+            echo "La cesta está vacía.";
+        }
     }
     
-
-   
-    
-
 }
