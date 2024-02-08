@@ -25,7 +25,7 @@
         <?php foreach ($listaarticulos as $articulo) { ?>
         <div class="col">
             <div class="card h-100">
-                <img class="card-img-top" src="img/<?= $articulo->getImg() ?>" alt="Card image cap">
+                <img class="card-img-top  mt-3  " src="img/<?= $articulo->getImg() ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="text-dark text-uppercase">Nombre:</h5>
                     <p class="card-title text-dark"><?= $articulo->getNombre() ?></p>
@@ -46,7 +46,8 @@
                                 echo '<p class="text-dark">En estos momentos no disponemos de este producto,disculpen las molestias y consulte más adelante</p>';
                             } ?>
                             <pre></pre>
-                            <button class="btn btn-outline-success btn-outline-dark" type="submit" name="accion" value="anadir">Añadir al carrito</button>
+                            <button class="btn btn-outline-success btn-outline-dark" type="submit" name="accion" value="anadir" <?php if ($articulo->getStock() == 0) echo 'disabled'; ?>>Añadir al carrito</button>
+
                         </form>
                     </div>
                 </div>

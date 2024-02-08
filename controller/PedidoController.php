@@ -64,6 +64,8 @@ class PedidoController{
             'total' => $articulo->getPrecio() * $_POST['cantidad'],
         );
 
+       
+
         include_once 'views/Carrito/cesta.php';
         
 
@@ -87,7 +89,11 @@ class PedidoController{
         //en la sesion tengo un usuario guardado necesito conseguir id y lo haré a través del método de la clase
         $idUsuario=$_SESSION['user']->getIdUsuarios();
         
-        PedidoDAO::add($precio_total,$idUsuario);
+        //Declaro variable que me devolverá el metodo
+        $idPedido = PedidoDAO::add($precio_total,$idUsuario);
+        // Llamar al método que necesitas pasando el ID del pedido 
+        $this->addDetPedido($idPedido);
+        
 
         // Obtén los pedidos asociados al ID del usuario actual
         $listapedidos = PedidoDAO::getPedidosByUserId($idUsuario);
@@ -135,6 +141,38 @@ class PedidoController{
             
         }
     }
+
+    public function addDetPedido() {
+        //inicio sesion
+        session_start();
+    
+        // Recolectar los datos de la cesta
+        $detallesPedido = array(); // Array para almacenar los detalles del pedido
+        foreach ($_SESSION['cesta'] as $lineacarrito) {
+            $idProducto = $lineacarrito["articulo"]->getIdProductos();
+            $precio = $lineacarrito["articulo"]->getPrecio();
+            $cantidad = $lineacarrito["cantidad"];
+            
+            // Almacenar los detalles del pedido en un array
+            $detallesPedido[] = array(
+                'Productos_idProductos' => $idProducto,
+                'precio' => $precio,
+                'cantidad' => $cantidad
+            );
+        }
+    
+        // Recolectar el ID del pedido que  recibo este método
+        $idPedido = $this->addPedido();
+        //Añado id al array detalle Pedido
+        $detallesPedido[]=array(
+            'Pedidos_idPedidos' => $idPedido
+        );
+
+        //Envio datos a addDetPedido del Pedido DAO
+        PedidoDao::addDetPedido($idProducto,$precio,$cantidad,$idPedido);
+        
+    }
+    
 
    
     

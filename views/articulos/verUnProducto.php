@@ -45,7 +45,8 @@
                         {
                             echo '<p class="text-white">En estos momentos no disponemos de este producto,disculpen las molestias y consulte más adelante</p>';
                         }?>
-                        <button class="btn btn-outline-success btn-outline-light" type="submit" name="accion" value="anadir">Añadir al carrito</button>
+                        <button class="btn btn-outline-success btn-outline-light" type="submit" name="accion" value="anadir" <?php if ($articulo->getStock() == 0) echo 'disabled'; ?>>Añadir al carrito</button>
+
                         
                     </form>
                 </div>

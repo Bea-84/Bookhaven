@@ -30,7 +30,12 @@ class PedidoDAO{
        $stmt = $conn->prepare("INSERT INTO pedidos (precio_total,idUsuario)VALUES(?,?)");
        $stmt->bind_param("di",$precio_total,$idUsuario);
        $stmt->execute();
+       // Obtener el ID del pedido generado
+       $idPedido = $stmt->insert_id;
+       
        $stmt->close();
+
+       return $idPedido;
     }
 
     //Función buscar pedidos por id usuario
@@ -50,6 +55,15 @@ class PedidoDAO{
       $con->close();
 
       return $pedidos;
+    }
+
+    //Función añadir detalle pedido a la BBDD
+    public function addDetPedido($idPedido,$idProducto,$precio,$cantidad){
+      $con = Database::connect();
+      $stmt = $con->prepare("INSERT INTO pedidos_has_productos (Pedidos_idPedidos,Productos_idProductos,precio,cantidad)VALUES(?,?,?,?) ");
+      $stmt->bind_param("iidi",$idPedido,$idProducto,$precio,$cantidad);
+      $stmt->execute();
+      $stmt->close();
     }
 
 
