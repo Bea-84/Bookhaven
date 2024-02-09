@@ -1,15 +1,11 @@
 <?php
 
-
-
 include_once 'config/parameters.php';
 include_once 'controller/ArticuloController.php';
 include_once 'controller/UsuarioController.php';
 include_once 'controller/CategoriaController.php';
 include_once 'controller/DashboardController.php';
 include_once 'controller/PedidoController.php';
-include_once 'controller/ComentarioController.php';
-
 
 
     //Se verifica si se ha enviado un controlador en la URL y si existe en la aplicación.
