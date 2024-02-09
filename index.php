@@ -8,6 +8,7 @@ include_once 'controller/UsuarioController.php';
 include_once 'controller/CategoriaController.php';
 include_once 'controller/DashboardController.php';
 include_once 'controller/PedidoController.php';
+include_once 'controller/ComentarioController.php';
 
 
 
