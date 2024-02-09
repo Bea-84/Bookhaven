@@ -8,6 +8,9 @@ class ArticuloController{
     //función para ver todos los productos 
     public function list(){
 
+        //Esta sesion start es solo para que se muestre la campana si existe una variable sesion con una cesta
+        session_start();
+
         $listacategorias = CategoriaDAO::getAllCategories();
         $listaarticulos = ArticuloDAO::getAllArticulos();
         include_once 'views/articulos/listado.php';
@@ -15,6 +18,8 @@ class ArticuloController{
     
     //Función para ver un producto por su Id
     public function listProductoxId(){
+        //Esta sesion start es solo para que se muestre la campana si existe una variable sesion con una cesta
+        session_start();
 
         $listacategorias = CategoriaDAO::getAllCategories();
 
@@ -26,6 +31,8 @@ class ArticuloController{
 
     //función para ver los productos de una categoría por su id
     public function listProductosxIdCat(){
+       //Esta sesion start es solo para que se muestre la campana si existe una variable sesion con una cesta
+       session_start();
 
        $listacategorias = CategoriaDAO::getAllCategories();
 
@@ -76,9 +83,22 @@ class ArticuloController{
 
         //recibo id producto para poder hacer la consulta
         $id=$_POST['id'];
-        //consualto con la BBDD el stock del producto con el id recibido
+        //consulto con la BBDD el stock del producto con el id recibido
         $articulo=ArticuloDAO::consultaStock($id);
           
     }
+
+    //Función para buscar un producto
+    public function search(){
+        $listacategorias = CategoriaDAO::getAllCategories();
+        //recibo por get la palabra
+        $search=$_POST['search'];
+        //consulto con la BBDD los productos que coincidan con la palabra
+        $listaarticulos = ArticuloDAO::search($search);
+        //muestro la vista con los productos
+        //echo var_dump($listaarticulos);
+        include_once 'views/articulos/resultadoBuscador.php';
+    }
+    
     
 }

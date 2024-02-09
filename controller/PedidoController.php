@@ -64,6 +64,8 @@ class PedidoController{
             'total' => $articulo->getPrecio() * $_POST['cantidad'],
         );
 
+        
+
         include_once 'views/Carrito/cesta.php';
         
 
@@ -153,11 +155,16 @@ class PedidoController{
     
                 // Llamar al método addDetPedido del PedidoDAO para almacenar los detalles del pedido en la base de datos
                 PedidoDao::addDetPedido($idPedido, $idProducto, $precio, $cantidad);
+                // Restar stock del producto una vez se ha finalizado pedido y se han guardado los datos en la BBDD
+                ArticuloDAO::restarStock($idProducto, $cantidad);
+
             }
         } else {
 
             echo "La cesta está vacía.";
         }
     }
+
+   
     
 }
