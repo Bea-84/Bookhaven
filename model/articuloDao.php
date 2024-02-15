@@ -59,10 +59,10 @@ class ArticuloDAO
     }
 
     //Función añadir producto
-    public static function add( $nombre, $precio, $descripcion, $idCategoria,$stock){
+    public static function add( $nombre, $precio, $descripcion, $idCategoria,$stock,$img){
         $con=Database::connect();
-        $stmt = $con->prepare("INSERT INTO productos (nombre, precio, descripcion,idCategoria,stock) VALUES ( ?, ?, ?,?,?)");
-        $stmt->bind_param("sssii", $nombre, $precio, $descripcion, $idCategoria,$stock);
+        $stmt = $con->prepare("INSERT INTO productos (nombre, precio, descripcion,idCategoria,img,stock) VALUES ( ?, ?, ?,?,?,?)");
+        $stmt->bind_param("sssisi", $nombre, $precio, $descripcion, $idCategoria,$img,$stock);
         $stmt->execute();
         $con->close();
     }

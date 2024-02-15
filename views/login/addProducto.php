@@ -16,8 +16,8 @@
     </div>
 
     <section class="content">
-
-    <form action="?controller=Articulo&action=add" method="post">
+    <!--enctype="multipart/form-data" atributo necesario para poder guardar un archivo de imagen de cualquier tipo-->
+    <form action="?controller=Articulo&action=add" method="post" enctype="multipart/form-data" >
         Nombre:
         <br>
         <input type="text" name="nombre" placeholder="Nombre" required/>
@@ -41,6 +41,10 @@
                 <option value="<?=$cat->getIdCategorias()?>"><?=$cat->getNombreCategoria()?></option>
             <?php }?>
         </select>
+        <br>
+        Foto:
+        <br>
+        <input type="file" accept="image/*" name="img" />
         <pre></pre>
         <button type="submit">Guardar</button>
     </form>

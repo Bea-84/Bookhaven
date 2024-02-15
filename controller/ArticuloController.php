@@ -49,7 +49,21 @@ class ArticuloController{
         $idCategoria = $_POST['idCategoria'];
         $stock = $_POST['stock'];
 
-        ArticuloDAO::add($nombre, $precio, $descripcion ,$idCategoria,$stock);
+        //añadir imagen al producto
+        // Directorio donde se guardarán las imágenes
+        $targetDirectory = "img/";
+
+        // Ruta completa del archivo de destino, se construye añadiendo el directorio y el nombre del archivo
+        $targetFile = $targetDirectory . basename($_FILES['img']['name']);
+
+        // Mueve el archivo cargado desde su ubicación temporal a la ubicación de destino
+        move_uploaded_file($_FILES["img"]["tmp_name"], $targetFile);
+
+        // Obtiene el nombre del archivo cargado para su posterior uso, por ejemplo, almacenarlo en una base de datos
+        $img = $_FILES["img"]["name"];
+
+
+        ArticuloDAO::add($nombre, $precio, $descripcion ,$idCategoria,$stock,$img);
 
         header("Location:".url."?controller=Dashboard&action=addProducto");
    
