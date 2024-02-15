@@ -31,11 +31,11 @@ class PedidoDAO{
        $stmt->bind_param("di",$precio_total,$idUsuario);
        $stmt->execute();
        // Obtener el ID del pedido generado
-       $idPedido = $stmt->insert_id;
+       $idPedidos = $stmt->insert_id;
        
        $stmt->close();
 
-       return $idPedido;
+       return $idPedidos;
     }
 
     //Función buscar pedidos por id usuario
@@ -58,13 +58,34 @@ class PedidoDAO{
     }
 
     //Función añadir detalle pedido a la BBDD
-    public static function addDetPedido($idPedido,$idProducto,$precio,$cantidad){
+    public static function addDetPedido($idPedidos,$idProducto,$precio,$cantidad){
       $con = Database::connect();
       $stmt = $con->prepare("INSERT INTO pedidos_has_productos (Pedidos_idPedidos,Productos_idProductos,precio,cantidad)VALUES(?,?,?,?) ");
-      $stmt->bind_param("iidi",$idPedido,$idProducto,$precio,$cantidad);
+      $stmt->bind_param("iidi",$idPedidos,$idProducto,$precio,$cantidad);
       $stmt->execute();
       $stmt->close();
     }
+
+    //Función para obtener el último pedido por ID de usuario
+    public static function getUltimoPedidoByUserId($idUsuario){
+      $con = Database::connect();
+      $stmt = $con->prepare("SELECT * FROM pedidos WHERE idUsuario = ? ORDER BY fecha_compra DESC LIMIT 1");
+      $stmt->bind_param("i", $idUsuario);
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      // Verificar si se encontró un pedido
+      if ($result->num_rows > 0) {
+         $ultimoPedido = $result->fetch_object('pedido');
+      } else {
+         $ultimoPedido = null;
+      }
+
+      $con->close();
+
+      return $ultimoPedido;
+    }
+
 
 
     

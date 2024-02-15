@@ -15,29 +15,29 @@ class PedidoController{
 
     //Función ver pedidos por idUsuario
     public function verPedidos(){
-        // Inicia sesión si no está iniciada
-        session_start();
-    
-        // Verifica si hay un usuario autenticado
-        if (isset($_SESSION['user'])) {
-            // Obtén el ID del usuario actual
-            $idUsuario = $_SESSION['user']->getIdUsuarios();
-    
-            // Obtén los pedidos asociados al ID del usuario actual
-            $listapedidos = PedidoDAO::getPedidosByUserId($idUsuario);
-    
+       // Inicia sesión si no está iniciada
+       session_start();
 
-            //cerrar sesion
-            session_write_close();
+       // Verifica si hay un usuario 
+       if (isset($_SESSION['user'])) {
+          // Obtén el ID del usuario actual
+           $idUsuario = $_SESSION['user']->getIdUsuarios();
 
+           // Obtén el último pedido del usuario actual
+           $ultimoPedido = PedidoDAO::getUltimoPedidoByUserId($idUsuario);
 
-            // Incluye la vista
-            include_once 'views/Carrito/verPedido.php';
-        } else {
-           
-            echo "No hay usuario autenticado.";
-        }
+           // Verifica si se encontró un pedido
+           if ($ultimoPedido) {
+               // Incluye la vista para mostrar el último pedido
+               include_once 'views/Carrito/verPedido.php';
+           } else {
+               echo "No hay pedidos para mostrar.";
+           }
+       } else {
+           echo "No existe el usuario.";
+       }
     }
+
   
     //Función añadir productos al carrito y guardar la cesta en variable sesion
     public function addCarrito(){
@@ -90,9 +90,9 @@ class PedidoController{
         $idUsuario=$_SESSION['user']->getIdUsuarios();
         
         //Declaro variable que me devolverá el metodo
-        $idPedido = PedidoDAO::add($precio_total,$idUsuario);
+        $idPedidos = PedidoDAO::add($precio_total,$idUsuario);
         // Envio a método id pedido 
-        $this->addDetPedido($idPedido);
+        $this->addDetPedido($idPedidos);
         
         // Obtén los pedidos asociados al ID del usuario actual
         $listapedidos = PedidoDAO::getPedidosByUserId($idUsuario);
@@ -142,7 +142,7 @@ class PedidoController{
     }
 
     //Función añadir detalle pedido a la BBDD
-    public function addDetPedido($idPedido) {
+    public function addDetPedido($idPedidos) {
         
         
         // Verificar si existe la cesta en la sesión y si no está vacía
@@ -154,7 +154,7 @@ class PedidoController{
                 $cantidad = $lineacarrito["cantidad"];
     
                 // Llamar al método addDetPedido del PedidoDAO para almacenar los detalles del pedido en la base de datos
-                PedidoDao::addDetPedido($idPedido, $idProducto, $precio, $cantidad);
+                PedidoDao::addDetPedido($idPedidos, $idProducto, $precio, $cantidad);
                 // Restar stock del producto una vez se ha finalizado pedido y se han guardado los datos en la BBDD
                 ArticuloDAO::restarStock($idProducto, $cantidad);
 
