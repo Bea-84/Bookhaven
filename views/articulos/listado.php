@@ -25,7 +25,7 @@
         <?php foreach ($listaarticulos as $articulo) { ?>
         <div class="col">
             <div class="card h-100">
-                <img class="card-img-top  mt-3  " src="img/<?= $articulo->getImg() ?>" alt="Card image cap">
+                <img class="card-img-top" src="img/<?= $articulo->getImg() ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="text-dark text-uppercase">Nombre:</h5>
                     <p class="card-title text-dark"><?= $articulo->getNombre() ?></p>

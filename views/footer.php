@@ -97,8 +97,8 @@
 
                             <!--Grid column-->
                             <div class="col-auto">
-                                <!-- Submit button -->
-                                <button type="submit" class="btn btn-outline border mb-4">Suscríbete</button>
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-outline-dark mb-4">Suscríbete</button>
                             </div>
                             <!--Grid column-->
                         </div>
