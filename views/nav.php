@@ -62,23 +62,30 @@
         </svg>
     </a>
 
-  <ul class=" dropdown-menu dropdown-menu-end ">
+    <ul class="dropdown-menu dropdown-menu-end">
+    <?php 
+    // Si no hay sesión iniciada, se inicia una nueva. Si ya existe una sesión, se mantiene la misma.
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    
+    // Si hay una sesión iniciada de usuario
+    if (isset($_SESSION['user'])) : ?>
+        <li><span class="dropdown-item"><?php echo 'Bienvenid@ , ' . $_SESSION['user']->getNombre(); ?></span></li>
+        <li><a class="dropdown-item" href="?controller=usuario&action=logout">Cerrar sesión</a></li>
+          
         <?php 
-        // Si no hay sesión iniciada, se inicia una nueva. Si ya existe una sesión, se mantiene la misma.
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-        
-        // Si hay una sesión iniciada de usuario
-        if (isset($_SESSION['user'])) : ?>
-            <li><span class="dropdown-item"><?php echo $_SESSION['user']->getNombre(); ?></span></li>
-            <li><a class="dropdown-item" href="?controller=usuario&action=logout">Cerrar sesión</a></li>
-              
-        <?php else: ?>
-            <!-- Si no hay sesión de usuario -->
-            <li><a class="dropdown-item" href="?controller=usuario&action=login">Iniciar sesión</a></li>
+        // Verificar si el usuario es administrador
+        if ($_SESSION['user']->getRol() == 'administrador') : ?>
+            <li><a class="dropdown-item" href="?controller=admin&action=panel">Ir a panel admin</a></li>
         <?php endif; ?>
-    </ul>
+          
+    <?php else: ?>
+        <!-- Si no hay sesión de usuario -->
+        <li><a class="dropdown-item" href="?controller=usuario&action=login">Iniciar sesión</a></li>
+    <?php endif; ?>
+</ul>
+
 
 </li>
     </ul>

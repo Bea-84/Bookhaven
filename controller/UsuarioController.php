@@ -46,7 +46,7 @@ class UsuarioController {
 
          // Obtener el hash almacenado en la base de datos a través del mail de usuario
          $storedHash = UsuarioDAO::getPasswordHash($email);
-
+        
         // Verificar la contraseña usando password_verify
         if (password_verify($password, $storedHash)) {
             // La contraseña es correcta
@@ -66,7 +66,7 @@ class UsuarioController {
                            }  
         } else {
             // no está registrado, te vuelve a arealogin.php para que introduzcas los datos bien o te registres seleccionando la opción ya existente
-            header("Location: " . url . "?controller=usuario&action=login");
+           header("Location: " . url . "?controller=usuario&action=login");
               
         }
     }

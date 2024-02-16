@@ -44,6 +44,7 @@
        <br>
        <select name="rol" required>
        <option value="usuario" selected>Usuario</option>
+       <option value="administrador" selected>Administrador</option>
        <!-- Puedes agregar más roles según tus necesidades -->
        </select>
        <br>

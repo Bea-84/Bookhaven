@@ -15,7 +15,7 @@
     <!-- Shopping cart table -->
     <div class="card">
         <div class="card-header">
-            <h2>Mi último pedido</h2>
+            <h2>Pedido Realizado con éxito, esperamos verle pronto</h2>
         </div>
         <div class="card-body">
             <div class="table-responsive">

@@ -1,0 +1,23 @@
+/* estilo imagenes card de listado.php*/
+.fixed-image-size {
+    width: 100%;
+    height: 300px; /* Puedes ajustar la altura según tus preferencias */
+    object-fit: cover; /* Para mantener la relación de aspecto y recortar la imagen si es necesario */
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+
+  /* Estilos adicionales para ajustar el tamaño del carousel header.php */
+  .carousel-item img {
+    max-height: 600px; /* Ajusta esta altura según tus necesidades */
+    width: auto;
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+  }
+
+/*-----------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
