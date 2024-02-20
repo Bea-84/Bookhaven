@@ -119,6 +119,9 @@ class UsuarioDao{
        $con->close();
     }
 
+ 
+    
+
 
 }
 

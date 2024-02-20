@@ -21,6 +21,7 @@ class UsuarioController {
         $password=$_POST['password'];
         $direccion=$_POST['direccion'];
         $rol = $_POST['rol']; // Nuevo campo para el rol
+
         //encripto password y lo guardo en nueva variable 
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
         

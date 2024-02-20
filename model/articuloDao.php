@@ -76,16 +76,29 @@ class ArticuloDAO
         $stmt->execute();
         $con->close();
     }
-
-    //Función editar producto
-    public static function edit( $id,$nombre, $precio, $descripcion,$stock,$idCategoria){
-        $con=Database::connect();
-        $stmt = $con->prepare("UPDATE productos SET nombre = ?, precio = ?, descripcion = ?, idCategoria = ?, stock = ? WHERE idProductos = ?");
-        $stmt->bind_param("sdsiii", $nombre, $precio, $descripcion, $idCategoria,$stock,$id);
-        $stmt->execute();
-        $con->close();
     
+    //Función editar un producto
+    public static function edit($id, $nombre, $precio, $descripcion, $stock, $idCategoria, $img){
+       $con = Database::connect();
+    
+       // Comprobar si se ha cargado una nueva imagen
+       if ($_FILES['img']['size'] > 0) {
+           // Directorio donde se guardarán las imágenes
+           $targetDirectory = "img/";
+           // Ruta completa del archivo de destino
+           $targetFile = $targetDirectory . basename($_FILES['img']['name']);
+           // Mueve el archivo cargado desde su ubicación temporal a la ubicación de destino
+           move_uploaded_file($_FILES['img']['tmp_name'], $targetFile);
+           // Obtiene el nombre del archivo cargado para su posterior uso
+           $img = $_FILES['img']['name'];
+       }
+    
+       $stmt = $con->prepare("UPDATE productos SET nombre = ?, precio = ?, descripcion = ?, idCategoria = ?, stock = ?, img = ? WHERE idProductos = ?");
+       $stmt->bind_param("sdsiiis", $nombre, $precio, $descripcion, $idCategoria, $stock, $img, $id);
+       $stmt->execute();
+       $con->close();
     }
+
 
     //Función consultar stock
     public static function consultaStock($idProductos){

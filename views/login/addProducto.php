@@ -8,7 +8,6 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="?controller=Articulo">Home</a></li>
-                        
                     </ol>
                 </div>
             </div>
@@ -16,36 +15,53 @@
     </div>
 
     <section class="content">
-    <!--enctype="multipart/form-data" atributo necesario para poder guardar un archivo de imagen de cualquier tipo-->
-    <form action="?controller=Articulo&action=add" method="post" enctype="multipart/form-data" >
-        Nombre:
-        <br>
-        <input type="text" name="nombre" placeholder="Nombre" required/>
-        <br>
-        Precio:
-        <br>
-        <input type="number" name="precio" placeholder="Precio" required/>
-        <br>
-        Descripción:
-        <br>
-        <input  name="descripcion" placeholder="Descripción" required/>
-        <br>
-        Stock:
-        <br>
-        <input type="number" name="stock" placeholder="Stock" required/>
-        <br>
-        Categoria:
-        <br>
-        <select name="idCategoria">
-            <?php foreach ($listacategorias as $cat ) {?>
-                <option value="<?=$cat->getIdCategorias()?>"><?=$cat->getNombreCategoria()?></option>
-            <?php }?>
-        </select>
-        <br>
-        Foto:
-        <br>
-        <input type="file" accept="image/*" name="img" />
-        <pre></pre>
-        <button type="submit">Guardar</button>
-    </form>
+        <form action="?controller=Articulo&action=add" method="post" enctype="multipart/form-data" class="card">
+            <div class="card-body">
+                <div class="form-group row">
+                    <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="precio" class="col-sm-2 col-form-label">Precio:</label>
+                    <div class="col-sm-10">
+                        <input type="number" name="precio" id="precio" class="form-control" placeholder="Precio" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="descripcion" class="col-sm-2 col-form-label">Descripción:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripción" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="stock" class="col-sm-2 col-form-label">Stock:</label>
+                    <div class="col-sm-10">
+                        <input type="number" name="stock" id="stock" class="form-control" placeholder="Stock" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="idCategoria" class="col-sm-2 col-form-label">Categoría:</label>
+                    <div class="col-sm-10">
+                        <select name="idCategoria" id="idCategoria" class="form-control" required>
+                            <?php foreach ($listacategorias as $cat ) {?>
+                                <option value="<?=$cat->getIdCategorias()?>"><?=$cat->getNombreCategoria()?></option>
+                            <?php }?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="img" class="col-sm-2 col-form-label">Foto:</label>
+                    <div class="col-sm-10">
+                        <input type="file" accept="image/*" name="img" id="img" class="form-control-file">
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-outline-success btn-outline-dark">Guardar</button>
+            </div>
+        </form>
     </section>
+</div>
+

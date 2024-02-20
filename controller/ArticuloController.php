@@ -85,9 +85,22 @@ class ArticuloController{
         $descripcion = $_POST['descripcion'];
         $stock = $_POST['stock'];
         $idCategoria = $_POST['idCategoria'];
+
+          // Procesar la imagen solo si se ha seleccionado una nueva
+          if ($_FILES['img']['size'] > 0) {
+            // Directorio donde se guardarán las imágenes
+            $targetDirectory = "img/";
+            // Ruta completa del archivo de destino
+            $targetFile = $targetDirectory . basename($_FILES['img']['name']);
+            // Mueve el archivo cargado desde su ubicación temporal a la ubicación de destino
+            move_uploaded_file($_FILES['img']['tmp_name'], $targetFile);
+            // Obtiene el nombre del archivo cargado para su posterior uso
+            $img = $_FILES['img']['name'];
+           
+        }
        
        
-        ArticuloDAO::edit($id,$nombre, $precio, $descripcion ,$stock,$idCategoria);
+        ArticuloDAO::edit($id,$nombre, $precio, $descripcion ,$stock,$idCategoria,$img);
 
         header("Location:".url."?controller=Dashboard&action=verProductos");
     }

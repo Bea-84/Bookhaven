@@ -77,7 +77,7 @@
         <?php 
         // Verificar si el usuario es administrador
         if ($_SESSION['user']->getRol() == 'administrador') : ?>
-            <li><a class="dropdown-item" href="?controller=admin&action=panel">Ir a panel admin</a></li>
+            <li><a class="dropdown-item" href="?controller=Dashboard&action=listUsuarios">Ir a panel admin</a></li>
         <?php endif; ?>
           
     <?php else: ?>

@@ -3,12 +3,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Editar categoria</h1>
+                    <h1 class="m-0">Editar categoría</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="?controller=Categoria">Home</a></li>
-                        
                     </ol>
                 </div>
             </div>
@@ -16,19 +15,21 @@
     </div>
 
     <section class="content">
-
-    <form action="?controller=Categoria&action=edit" method="post">
-        <input type="number" name="id" value="<?=$categoria->getIdCategorias()?>" required hidden/>
-        <br>
-        Nombre categoria:
-        <br>
-        <input type="text" name="nombre" placeholder="Nombre categoria" value="<?=$categoria->getNombreCategoria()?>"  required/>
-        <br>
-        Descripción:
-        <br>
-        <input type="text" name="descripcion" placeholder="Descripción" value="<?=$categoria->getDescripcion()?>" required/>
-        <br>
-        <pre></pre>
-        <button type="submit">Guardar</button>
-    </form>
+        <form action="?controller=Categoria&action=edit" method="post" class="card">
+            <div class="card-body">
+                <input type="hidden" name="id" value="<?=$categoria->getIdCategorias()?>" required>
+                <div class="form-group">
+                    <label for="nombre">Nombre categoría:</label>
+                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre categoría" value="<?=$categoria->getNombreCategoria()?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripción" value="<?=$categoria->getDescripcion()?>" required>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-outline-success btn-outline-dark">Guardar</button>
+            </div>
+        </form>
     </section>
+</div>
