@@ -65,6 +65,11 @@ class PedidoController{
         );
 
         
+        // Contar el total de productos en la cesta para contador nav
+        $totalProductos = 0;
+        foreach ($_SESSION['cesta'] as $producto) {
+           $totalProductos += $producto['cantidad'];
+        }
 
         include_once 'views/Carrito/cesta.php';
         
