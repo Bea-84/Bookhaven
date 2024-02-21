@@ -94,7 +94,7 @@ class ArticuloDAO
        }
     
        $stmt = $con->prepare("UPDATE productos SET nombre = ?, precio = ?, descripcion = ?, idCategoria = ?, stock = ?, img = ? WHERE idProductos = ?");
-       $stmt->bind_param("sdsiiis", $nombre, $precio, $descripcion, $idCategoria, $stock, $img, $id);
+       $stmt->bind_param("sdsiisi", $nombre, $precio, $descripcion, $idCategoria, $stock, $img, $id);
        $stmt->execute();
        $con->close();
     }

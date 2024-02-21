@@ -119,6 +119,24 @@ class UsuarioDao{
        $con->close();
     }
 
+    //Función para verificar si existe ya ese email en la BBDD 
+    public static function emailExists($email){
+        $con = Database::connect();
+    
+        $stmt = $con->prepare("SELECT COUNT(*) as count FROM usuarios WHERE email=?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        $row = $result->fetch_assoc();
+        $count = $row['count'];
+    
+        $con->close();
+    
+        return $count > 0; // Devuelve true si el correo electrónico existe, false de lo contrario
+    }
+    
+
  
     
 

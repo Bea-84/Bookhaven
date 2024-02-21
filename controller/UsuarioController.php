@@ -22,6 +22,14 @@ class UsuarioController {
         $direccion=$_POST['direccion'];
         $rol = $_POST['rol']; // Nuevo campo para el rol
 
+        // Verificar si el correo electrónico ya existe en la base de datos
+        if(UsuarioDAO::emailExists($email)) {
+           // Si el correo electrónico ya existe, muestra un mensaje de alerta al usuario
+           echo '<script>alert("El correo electrónico ya está registrado. Por favor, intente con otro correo electrónico."); 
+           window.location.href = "?controller=Dashboard&action=addNuevoUsuario";</script>';
+           exit; // Detener la ejecución del script
+        }
+
         //encripto password y lo guardo en nueva variable 
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
         
