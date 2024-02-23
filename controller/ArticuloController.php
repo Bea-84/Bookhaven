@@ -1,6 +1,6 @@
 <?php
 
-include_once 'model/ArticuloDAO.php';
+include_once 'model/articuloDao.php';
 include_once 'model/CategoriaDAO.php';
 
 class ArticuloController{

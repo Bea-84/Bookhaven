@@ -1,7 +1,7 @@
 <?php
 
 
-include_once 'model/UsuarioDAO.php';
+include_once 'model/usuarioDao.php';
 
 class UsuarioController {
 

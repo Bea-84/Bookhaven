@@ -1,9 +1,9 @@
 <?php
 
-include_once 'model/ArticuloDAO.php';
-include_once 'model/UsuarioDAO.php';
+include_once 'model/articuloDao.php';
+include_once 'model/usuarioDao.php';
 include_once 'model/CategoriaDAO.php';
-include_once 'model/PedidoDAO.php';
+include_once 'model/pedidoDao.php';
 
 class DashboardController{
 
