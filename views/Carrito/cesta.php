@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    <style>
+        /* Estilo para las imágenes en la tabla */
+        table img {
+          width: 50%; /* Ajustar el ancho máximo de la imagen al ancho de la celda */
+          height: 50%; /* Asegurarse de que la altura se ajuste automáticamente para mantener la proporción */
+          display: block; /* Hacer que la imagen sea un elemento de bloque */
+          margin: 0 auto; /* Centrar horizontalmente */
+        }
+
+    </style>
+
 </head>
 <body>
 

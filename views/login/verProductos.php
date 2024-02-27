@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver productos</title>
+    <style>
+        /* Estilo para las imágenes de productos en la tabla */
+        table img {
+          width: 40%;
+          height: 40%;
+          display: block;
+          margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
 
