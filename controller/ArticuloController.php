@@ -8,37 +8,53 @@ class ArticuloController{
     //función para ver todos los productos 
     public function list(){
          
-        //Esta sesion start es solo para que se muestre la campana si existe una variable sesion con una cesta
+        //Esta sesion start es solo para que se muestre numero productos en la cesta
         session_start();
 
         $listacategorias = CategoriaDAO::getAllCategories();
         $listaarticulos = ArticuloDAO::getAllArticulos();
+        $_SESSION['totalProductos'] = $this->calcularTotalProductosEnCesta(); 
         include_once 'views/articulos/listado.php';
     }
     
     //Función para ver un producto por su Id
     public function listProductoxId(){
-        //Esta sesion start es solo para que se muestre la campana si existe una variable sesion con una cesta
+        //Esta sesion start es solo para que se muestre numero productos en la cesta
         session_start();
 
         $listacategorias = CategoriaDAO::getAllCategories();
 
         $id=$_GET['id'];
         $articulo = ArticuloDAO::getArticuloById($id);
+        $_SESSION['totalProductos'] = $this->calcularTotalProductosEnCesta();
         include_once 'views/articulos/verUnProducto.php';
         
     }
 
     //función para ver los productos de una categoría por su id
     public function listProductosxIdCat(){
-       //Esta sesion start es solo para que se muestre la campana si existe una variable sesion con una cesta
-       session_start();
+       
+        //Esta sesion start es solo para que se muestre numero productos en la cesta
+        session_start();
 
        $listacategorias = CategoriaDAO::getAllCategories();
 
        $id=$_GET['id'];
        $listaarticulos = ArticuloDAO::listProductosxId($id);
+       $_SESSION['totalProductos'] = $this->calcularTotalProductosEnCesta();
        include_once 'views/articulos/listado.php';
+    }
+
+    
+    //Función para calcular el total de productos en la cesta  
+    private function calcularTotalProductosEnCesta() {
+        $totalProductos = 0;
+        if(isset($_SESSION['cesta'])) {
+            foreach ($_SESSION['cesta'] as $producto) {
+                $totalProductos += $producto['cantidad'];
+            }
+        }
+        return $totalProductos;
     }
 
     //Función para añadir un producto

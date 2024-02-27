@@ -65,17 +65,24 @@ class PedidoController{
         );
 
         
-        // Contar el total de productos en la cesta para contador nav
-        $totalProductos = 0;
-        foreach ($_SESSION['cesta'] as $producto) {
-           $totalProductos += $producto['cantidad'];
-        }
+        $_SESSION['totalProductos'] = $this->calcularTotalProductosEnCesta(); 
 
         
 
         include_once 'views/Carrito/cesta.php';
         
 
+    }
+
+      // Método para calcular el total de productos en la cesta  
+      private function calcularTotalProductosEnCesta() {
+        $totalProductos = 0;
+        if(isset($_SESSION['cesta'])) {
+            foreach ($_SESSION['cesta'] as $producto) {
+                $totalProductos += $producto['cantidad'];
+            }
+        }
+        return $totalProductos;
     }
 
     //Función añadir pedido a la BBDD
@@ -127,8 +134,15 @@ class PedidoController{
             }
         
         }
-        //vuelvo a mostrar la cesta
-        include_once 'views/Carrito/cesta.php';
+        
+        // Recalcular el total de productos en la cesta después de eliminar el artículo
+    $totalProductos = $this->calcularTotalProductosEnCesta();
+
+    // Actualizar la variable en la sesión
+    $_SESSION['totalProductos'] = $totalProductos;
+
+    // Redirigir de nuevo a la página de la cesta
+    header("Location: ?controller=pedido&action=verCesta");
            
         
     }
