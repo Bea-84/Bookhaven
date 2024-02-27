@@ -7,7 +7,7 @@ class ArticuloController{
 
     //función para ver todos los productos 
     public function list(){
-
+         
         //Esta sesion start es solo para que se muestre la campana si existe una variable sesion con una cesta
         session_start();
 

@@ -71,6 +71,8 @@ class PedidoController{
            $totalProductos += $producto['cantidad'];
         }
 
+        
+
         include_once 'views/Carrito/cesta.php';
         
 
